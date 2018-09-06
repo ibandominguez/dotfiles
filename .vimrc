@@ -1,166 +1,76 @@
-" Custom Vim Config - Good looking efficient vim
-" Credits and inspiration: http://github.com/grigio/vim-sublime
-
-" Vundle Plugins
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'gcmt/breeze.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'tomtom/tcomment_vim'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'colors'
-call vundle#end()
-
-" Plugins configs
-
-au VimEnter * NERDTree
+" My custom .vimrc
 
 " Color scheme
 
-colorscheme Monokai
+colorscheme Monokai " Use Monokai theme ~/.vim/colors/Monokai.vim
 
-" File configs
+" Handling syntax
 
-filetype off
-filetype plugin indent on
+syntax on " Use syntax highlighting
 
-if has('autocmd')
-  filetype plugin indent on
-endif
+" Filetype 
 
-" Syntax configs
+filetype plugin indent on " Filetype indentation
 
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-endif
+" Setting options
 
-" Sets configs
+set number " Display numbers
+set smartindent " Indent Enhacements
+set tabstop=2 " Tab indenting to 2
+set shiftwidth=2 " When indenting with '>'
+set expandtab " Indenting on tab
+set backspace=indent,eol,start " Familiar like backspace behaving
+set clipboard=unnamedplus " Make sure vim uses the system keyboard
 
-set nocompatible
-set autoindent
-set backspace=indent,eol,start
-set complete-=i
-set showmatch
-set showmode
-set smarttab
-set nrformats-=octal
-set shiftround
-set ttimeout
-set ttimeoutlen=50
-set incsearch
-set laststatus=2
-set ruler
-set showcmd
-set wildmenu
-set autoread
-set encoding=utf-8
-set tabstop=2 shiftwidth=2 expandtab
-set listchars=tab:▒░,trail:▓
-set list
-set number
-set hlsearch
-set ignorecase
-set smartcase
-set nobackup
-set nowritebackup
-set noswapfile
-set fileformats=unix,dos,mac
-set hidden
-set completeopt=menuone,longest,preview
+" Mappings
 
-if has('mouse')
-  set mouse=a
-endif
+" Selection
+" Ctrl + a = Toggle Select all
+map <C-a> <Esc>ggVG<Enter>
+imap <C-a> <Esc>ggVG<Enter> 
 
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
+" File shortkeys
+" Ctrl + n = Create a new file
+" Ctrl + s = Save current file
+" Ctrl + o = TODO: USE ctrlp Plugin
+map <C-n> :tabnew name.ext
+map <C-s> :update<Enter>
 
-" Maps
+" Cut, Copy and Pase shortkeys
+" Ctrl + x = Cut selection
+" Ctrl + c = Copy selection
+" Ctrl + p = Paste selection
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<Esc>"+p
+nmap <C-v> p
+imap <C-v> <Esc>"+pa
 
-inoremap <C-U> <C-G>u<C-U>
-map Q gq " Don't use Ex mode, use Q for formatting
-
-" FIXME: (broken) ctrl s to save
-noremap  <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <Esc>:update<CR>
-
-" exit insert mode
-inoremap <C-c> <Esc>
-
-"
-" Plugins config
-"
-
-" NERDTree
-nnoremap <S-n> :NERDTreeToggle<CR>
-
-" CtrlP
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*
-
-" Ultisnip
-" NOTE: <f1> otherwise it overrides <tab> forever
-let g:UltiSnipsExpandTrigger="<f1>"
-let g:UltiSnipsJumpForwardTrigger="<f1>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:did_UltiSnips_vim_after = 1
-
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='badwolf'
-let g:Powerline_symbols='unicode'
-
-"
-" Basic shortcuts definitions
-"  most in visual mode / selection (v or ⇧ v)
-"
-
-" Find
+" Find and Replace shortkeys
+" Ctrl + f = Find in current document
 map <C-f> /
-" indent / deindent after selecting the text with (⇧ v), (.) to repeat.
-vnoremap <Tab> >
-vnoremap <S-Tab> <
-" comment / decomment & normal comment behavior
-vmap <C-m> gc
-" Disable tComment to escape some entities
-let g:tcomment#replacements_xml={}
-" Text wrap simpler, then type the open tag or ',"
-vmap <C-w> S
-" Cut, Paste, Copy
-vmap <C-x> d
-vmap <C-v> p
-vmap <C-c> y
-" Undo, Redo (broken)
-nnoremap <C-z>  :undo<CR>
-inoremap <C-z>  <Esc>:undo<CR>
-nnoremap <C-y>  :redo<CR>
-inoremap <C-y>  <Esc>:redo<CR>
-" Tabs
-nnoremap <C-b>  :tabprevious<CR>
-inoremap <C-b>  <Esc>:tabprevious<CR>i
-nnoremap <C-n>  :tabnext<CR>
-inoremap <C-n>  <Esc>:tabnext<CR>i
-nnoremap <C-t>  :tabnew<CR>
-inoremap <C-t>  <Esc>:tabnew<CR>i
-nnoremap <C-k>  :tabclose<CR>
-inoremap <C-k>  <Esc>:tabclose<CR>i
+" ===> TODO search, replace
 
-" lazy ':'
-map \ :
+" Multiple cursors
+" Ctrl + d = Select next ocurrence
+" ===> TODO
 
-let mapleader = ','
-nnoremap <Leader>p :set paste<CR>
-nnoremap <Leader>o :set nopaste<CR>
-noremap  <Leader>g :GitGutterToggle<CR>
+" Undo, Redo Default shortkeys
+" Ctrl + z = Undo 
+" Ctrl + r = Redo
+" ===> TODO
+
+" Tabs shortkeys
+" Ctrl + t = Open new tab
+" Ctrl + w = Close current tab
+" TODO Ctrl + Alt + Left = Navigate to previous tab
+" TODO Ctrl + Alt + Right = Navigate to next tab
+map <C-t> :tabnew<Enter>
+map <C-w> :close<Enter>
+map <C-ALT-Left> :tabprevious<Enter>
+map <C-ALT-Right> :tabnext<Enter>
+
+" Left indentation
+" Shift + Tab = Indent left
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
