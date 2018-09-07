@@ -1,10 +1,29 @@
 " My custom .vimrc
 
+" TODO:
+" - Fixes and Enhancements:
+"   - Fix <Esc> left movement
+"   - Enhance Copy, Pase
+"   - Enhance File creation, renaming, etc...
+"   - Add Tabs Navigation
+"   - Add Reserved keys fix on startup
+" - Plugins:
+"   - Autocomplete (YouCompleteMe + UltiSnips)
+"   - Linting
+"   - Git
+"   - Nerdtree + Git
+"   - Multicursors
+"   - Search and replace, current file and project  
+
 " Plugins Setup 
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'kien/ctrlp.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()
 
 " Color scheme
@@ -21,6 +40,8 @@ filetype plugin indent on " Filetype indentation
 
 " Setting options
 
+set nowrap " don't wrap lines
+set showmode " Always show mode
 set number " Display numbers
 set smartindent " Indent Enhacements
 set tabstop=2 " Tab indenting to 2
@@ -32,6 +53,7 @@ set ignorecase " Case insensitive search
 set smartcase " Use case sensitive if any cap is used
 set incsearch " show match as search proceeds
 set hlsearch " search highlights
+set mouse=a " Enable using the mouse if terminal emulator
 
 " Mappings
 
@@ -42,7 +64,7 @@ imap <C-a> <Esc>ggVG<Enter>
 
 " File shortkeys
 " Execute "stty -ixon -ixoff" 
-" to free terminal reserved key combos
+" to free terminal reserved key
 " Ctrl + n = Create a new file
 " Ctrl + s = Save current file
 " Ctrl + o = Use ctrlp Plugin
@@ -104,3 +126,9 @@ let g:ctrlp_map = '<C-o>' " Change ctrlp keys
 let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': [], 'AcceptSelection("t")': ['<cr>', '<c-m>'] } " Open new files in tab
 let g:ctrlp_match_current_file = 1 " List editing files too
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'] " Ignore from .gitignore
+
+" Airline configs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='base16_grayscale'
