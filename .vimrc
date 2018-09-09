@@ -7,12 +7,12 @@
 "   - Add Tabs Navigation shortkeys
 "   - Add (Alt + arrows) navigation shortkeys for movement and deletion 
 "   - Replace Tabs on the left for the project path
+"   - Enhanced HTML, CSS, LESS, SASS, JS and PHP support
 " - Plugins:
-"   - Autocomplete (YouCompleteMe + UltiSnips)
 "   - Linting
 "   - Nerdtree + Git ???
 "   - Multicursors
-"   - Search and replace, current file and project  
+"   - Search and replace, current file and project (Far) 
 
 " ==> Plugins Setup 
 " ==> Additional functionality 
@@ -27,6 +27,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -39,7 +42,7 @@ silent !stty -ixon
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
 
-" Create partent directories 
+" Create parent directories 
 autocmd BufWritePre * :silent !mkdir -p %:p:h
 
 " ==> Color scheme
@@ -76,7 +79,8 @@ set mouse=a " Enable using the mouse if terminal emulator
 set updatetime=100 " Reduces update time for gitgutter to show updates
 set encoding=utf-8 " The encoding displayed.
 set fileencoding=utf-8 " The encoding written to file.
-set nobackup " Prevent vim from creating anoying .swap files
+set nobackup " Prevent vim from creating backups
+set noswapfile " Prevent vim from creating .sw files
 
 " ==> Mappings
 " ==> Custom shortcuts to save time
@@ -159,3 +163,16 @@ let g:airline#extensions#tabline#left_alt_sep = '|' " Separator char
 let g:airline#extensions#tabline#show_close_button = 0 " Do not show close button since no mouse is used
 let g:airline#extensions#tabline#tab_min_count = 2 " Only show tabs when more than one file
 let g:airline_theme = 'base16_grayscale' " Bar theme
+
+" UltiSnips keys 
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+let g:UltiSnipsEditSplit = "vertical"
+
+" UltiSnips Workaround to use Enter (Sublime like)
+let g:ulti_expand_or_jump_res = 0 "default value, just set once
+function! Ulti_ExpandOrJump_and_getRes()
+  call UltiSnips#ExpandSnippetOrJump()
+  return g:ulti_expand_or_jump_res
+endfunction
+inoremap <CR> <C-R>=(Ulti_ExpandOrJump_and_getRes() > 0)?"":"\n"<CR>
