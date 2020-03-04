@@ -88,7 +88,12 @@ set noswapfile " Prevent vim from creating .sw files
 " Selection
 " Ctrl + a = Toggle Select all
 map <C-a> <Esc>ggVG<Enter>
-imap <C-a> <Esc>ggVG<Enter> 
+imap <C-a> <Esc>ggVG<Enter>
+
+" Prevent from mouse scrolling
+" Pass the bottom end line
+map <ScrollWheelUp> H5k
+map <ScrollWheelDown> L5j
 
 " File shortkeys
 " Ctrl + n = Create a new file
