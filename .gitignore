@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.zshrc
+!.tmux.conf
+!.config/
+!.config/nvim/
+!.config/nvim/*
