@@ -66,7 +66,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Autostart tmux on terminal launch
-# ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=true
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -112,5 +112,13 @@ export PATH="/usr/local/opt/qt@5/bin:$PATH"
 
 # vscode alias
 alias code="open -a /Applications/Visual\ Studio\ Code.app"
+
+# Set terminal profile
+# I use this to switch between Code and WebCode
+# which allow me to use the terminal opactity to see through
+# while I edit. Ex: Changin styles in a webpage
+function tp() {
+ osascript -e "tell application \"Terminal\" to set current settings of first window to settings set \"$1\""
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
