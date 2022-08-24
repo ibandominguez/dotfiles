@@ -2,9 +2,7 @@
 " TODO: type instructions on how to get started.
 
 " TODO Functionalities:
-" Terminal, horizontal split
 " Project search and replace
-" Tmux and telescope for terminal sessions???
 " Enhance snippets and create my own ones
 
 " Plug plugin manager: https://github.com/junegunn/vim-plug
@@ -25,7 +23,6 @@ call plug#begin()
 	Plug 'editorconfig/editorconfig-vim' " Editorconfig
 	Plug 'airblade/vim-gitgutter' " Git status lines
 	Plug 'romainl/vim-cool' " Handle search highlight toggle
-  Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'} " Terminal
 	Plug 'vim-airline/vim-airline' " Status bar
   Plug 'kdheepak/lazygit.nvim' " :LazyGit GitLens VSCode like git
   Plug 'AndrewRadev/tagalong.vim' " AutoRenameTag HTML, JSX, XML
@@ -83,11 +80,6 @@ map <silent><C-l> :BufferNext<cr>
 " r: rename the file or dir on the current cursor
 lua require'nvim-tree'.setup {}
 map <silent><C-b> :NvimTreeToggle<cr>
-
-" Terminal
-" TODO set terminal to open on the sidebar (NvimTree)
-" so the required can be running and controlled.
-lua require'toggleterm'.setup {}
 
 " LazyGit config
 " TODO: Setup key combo map to open LazyGit
