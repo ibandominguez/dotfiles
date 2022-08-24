@@ -2,6 +2,7 @@
   "suggest.noselect": false,
   "prettier.semi": false,
   "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
