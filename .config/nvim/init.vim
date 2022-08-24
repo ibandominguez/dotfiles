@@ -1,5 +1,7 @@
-" Vim config file
-" TODO: type instructions on how to get started.
+" This is my work in progress vim config file
+
+" TODO: List system dependencies such as fzf for Telescope live_grep
+" Macos: brew install fd ripgrep fzf
 
 " TODO Functionalities:
 " Project search and replace
@@ -16,8 +18,10 @@ call plug#begin()
 	Plug 'neoclide/coc.nvim'  " Auto Completion
 	Plug 'ryanoasis/vim-devicons' " Developer Icons
 	Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+  Plug 'nvim-lua/plenary.nvim' " Telescope required dependency
 	Plug 'nvim-telescope/telescope.nvim' " Latest neovim list fuzzy finder
 	Plug 'nvim-telescope/telescope-file-browser.nvim' " File browser fuzzy finder vscode style
+  Plug 'nvim-telescope/telescope-fzf-native.nvim' " Native fzf to improve performance
 	Plug 'romgrk/barbar.nvim' " Enhanced tabs
 	Plug 'kyazdani42/nvim-tree.lua' " File explorer sidebar
 	Plug 'editorconfig/editorconfig-vim' " Editorconfig
@@ -26,6 +30,9 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline' " Status bar
   Plug 'kdheepak/lazygit.nvim' " :LazyGit GitLens VSCode like git
   Plug 'AndrewRadev/tagalong.vim' " AutoRenameTag HTML, JSX, XML
+  Plug 'pangloss/vim-javascript' " Javascript extended support
+  Plug 'leafgarland/typescript-vim' " Typescript extended support
+  Plug 'peitalin/vim-jsx-typescript' " TSX, JSX support
 call plug#end()
 
 syntax enable
@@ -47,6 +54,7 @@ set completeopt-=preview
 set cursorline " Hightlight the current line
 set ignorecase " Ignore case when searching
 set smartcase " Switch to search case sensitive if capital is found
+set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
 
 " AirlineVim plugin config 
 let g:airline_powerline_fonts = 1
@@ -64,7 +72,7 @@ inoremap <expr><Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-p> :Telescope git_files<cr>
+nnoremap <C-p> :Telescope find_files<cr>
 
 " Barbar, enhanced tabs configs and maps
 " TODO nvimtree integration:
@@ -82,4 +90,11 @@ lua require'nvim-tree'.setup {}
 map <silent><C-b> :NvimTreeToggle<cr>
 
 " LazyGit config
-" TODO: Setup key combo map to open LazyGit
+map <silent><C-g> :LazyGit<cr>
+
+" Javascript support
+let g:javascript_plugin_jsdoc = 1
+
+" Vim-jsx-typescript config
+" JSX Support for all files js,jsx,tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype=typescriptreact
