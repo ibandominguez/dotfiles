@@ -3,15 +3,14 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "none",
+  "prettier.printWidth": 120,
   "coc.preferences.formatOnSaveFiletypes": [
+    "php",
+    "json",
+    "python",
     "javascript",
     "typescript",
-    "python",
-    "typescriptreact",
-    "json",
     "javascriptreact",
-    "typescript.tsx",
-    "graphql",
-    "php"
+    "typescriptreact"
   ]
 }

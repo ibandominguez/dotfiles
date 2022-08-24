@@ -1,11 +1,15 @@
 " This is my work in progress vim config file
 
-" TODO: List system dependencies such as fzf for Telescope live_grep
+" TODO: List keys of the plugins and extesions to have
+" a quick reference.
+
+" TODO: List system dependencies and installation guide or links
 " Macos: brew install fd ripgrep fzf
 
 " TODO Functionalities:
 " Project search and replace
 " Enhance snippets and create my own ones
+" Share system clipboard
 
 " Plug plugin manager: https://github.com/junegunn/vim-plug
 " Refer to the docs for installation
@@ -72,7 +76,10 @@ inoremap <expr><Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-p> :Telescope find_files<cr>
+" TODO: Find a way to be able to go :Telescope resume
+" that can differentiate between find_files and live_grep
+map <C-p> :Telescope find_files<cr>
+map <C-f> :Telescope live_grep<cr>
 
 " Barbar, enhanced tabs configs and maps
 " TODO nvimtree integration:
@@ -97,4 +104,4 @@ let g:javascript_plugin_jsdoc = 1
 
 " Vim-jsx-typescript config
 " JSX Support for all files js,jsx,tsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx,*.js set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
