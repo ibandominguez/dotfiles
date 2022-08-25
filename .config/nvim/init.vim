@@ -59,6 +59,7 @@ set cursorline " Hightlight the current line
 set ignorecase " Ignore case when searching
 set smartcase " Switch to search case sensitive if capital is found
 set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
+set clipboard=unnamed " Share clipboard
 
 " AirlineVim plugin config 
 let g:airline_powerline_fonts = 1
