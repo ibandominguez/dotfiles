@@ -113,12 +113,23 @@ export PATH="/usr/local/opt/qt@5/bin:$PATH"
 # vscode alias
 alias code="open -a /Applications/Visual\ Studio\ Code.app"
 
+
+# Install plugins function
+function install_ohmyzsh_plugins() {
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+}
+
 # Set terminal profile
 # I use this to switch between Code and WebCode
 # which allow me to use the terminal opactity to see through
 # while I edit. Ex: Changin styles in a webpage
 function tp() {
- osascript -e "tell application \"Terminal\" to set current settings of first window to settings set \"$1\""
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    osascript -e "tell application \"Terminal\" to set current settings of first window to settings set \"$1\""
+  else
+    echo "tp only works on MacOs"
+  fi
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
