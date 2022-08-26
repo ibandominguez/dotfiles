@@ -9,7 +9,6 @@
 " TODO Functionalities:
 " Project search and replace
 " Enhance snippets and create my own ones
-" Share system clipboard
 
 " Plug plugin manager: https://github.com/junegunn/vim-plug
 " Refer to the docs for installation
@@ -58,8 +57,16 @@ set completeopt-=preview
 set cursorline " Hightlight the current line
 set ignorecase " Ignore case when searching
 set smartcase " Switch to search case sensitive if capital is found
+set incsearch " Show search results as you type
 set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
 set clipboard=unnamed " Share clipboard
+set noswapfile " Disable swap file
+
+" Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 " AirlineVim plugin config 
 let g:airline_powerline_fonts = 1
@@ -88,6 +95,7 @@ map <C-f> :Telescope live_grep<cr>
 highlight BufferInactive cterm=none ctermbg=none ctermfg=darkgrey
 map <silent><C-h> :BufferPrevious<cr>
 map <silent><C-l> :BufferNext<cr>
+map <silent><C-W> :BufferClose<cr>
 
 " Start nvim-tree
 " keys list for quick documentation:
@@ -104,5 +112,5 @@ map <silent><C-g> :LazyGit<cr>
 let g:javascript_plugin_jsdoc = 1
 
 " Vim-jsx-typescript config
-" JSX Support for all files js,jsx,tsx
+" JSX Support for all files jsx,tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
