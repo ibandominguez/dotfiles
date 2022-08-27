@@ -36,6 +36,7 @@ call plug#begin()
   Plug 'pangloss/vim-javascript' " Javascript extended support
   Plug 'leafgarland/typescript-vim' " Typescript extended support
   Plug 'peitalin/vim-jsx-typescript' " TSX, JSX support
+  Plug 'rcarriga/nvim-notify' " Vim notifications
 call plug#end()
 
 syntax enable
@@ -61,12 +62,13 @@ set incsearch " Show search results as you type
 set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
 set clipboard=unnamed " Share clipboard
 set noswapfile " Disable swap file
+set termguicolors " Required for vim notify and other plugins colors to work
 
 " Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+noremap <silent><Left> :lua require("notify")("No arrow keys for you", "error")<cr> 
+noremap <silent><Up> :lua require("notify")("No arrow keys for you", "error")<cr> 
+noremap <silent><Down> :lua require("notify")("No arrow keys for you", "error")<cr> 
+noremap <silent><Right> :lua require("notify")("No arrow keys for you", "error")<cr> 
 
 " AirlineVim plugin config 
 let g:airline_powerline_fonts = 1
