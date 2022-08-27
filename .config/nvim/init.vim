@@ -10,6 +10,10 @@
 " Project search and replace
 " Enhance snippets and create my own ones
 
+" TODO enhacements & fixes:
+" - Prevent nvim-tree from opening in the right hand side.
+" - Propper workflow in insert mode to move from inside symbol pairs.
+
 " Plug plugin manager: https://github.com/junegunn/vim-plug
 " Refer to the docs for installation
 call plug#begin()
@@ -65,10 +69,10 @@ set noswapfile " Disable swap file
 set termguicolors " Required for vim notify and other plugins colors to work
 
 " Disable arrow keys
-noremap <silent><Left> :lua require("notify")("No arrow keys for you", "error")<cr> 
-noremap <silent><Up> :lua require("notify")("No arrow keys for you", "error")<cr> 
-noremap <silent><Down> :lua require("notify")("No arrow keys for you", "error")<cr> 
-noremap <silent><Right> :lua require("notify")("No arrow keys for you", "error")<cr> 
+map <silent><Left> :lua require("notify")("No arrow keys for you", "error")<cr> 
+map <silent><Up> :lua require("notify")("No arrow keys for you", "error")<cr> 
+map <silent><Down> :lua require("notify")("No arrow keys for you", "error")<cr> 
+map <silent><Right> :lua require("notify")("No arrow keys for you", "error")<cr> 
 
 " AirlineVim plugin config 
 let g:airline_powerline_fonts = 1
@@ -92,8 +96,6 @@ map <C-p> :Telescope find_files<cr>
 map <C-f> :Telescope live_grep<cr>
 
 " Barbar, enhanced tabs configs and maps
-" TODO nvimtree integration:
-" https://github.com/romgrk/barbar.nvim#integration-with-filetree-plugins
 highlight BufferInactive cterm=none ctermbg=none ctermfg=darkgrey
 map <silent><C-h> :BufferPrevious<cr>
 map <silent><C-l> :BufferNext<cr>
@@ -106,6 +108,29 @@ map <silent><C-W> :BufferClose<cr>
 " r: rename the file or dir on the current cursor
 lua require'nvim-tree'.setup {}
 map <silent><C-b> :NvimTreeToggle<cr>
+
+" Barbar-Nvim-tree integration
+" Adjust tabs to the sidebar
+lua <<EOF
+  local nvim_tree_events = require('nvim-tree.events')
+  local bufferline_state = require('bufferline.state')
+  
+  local function get_tree_size()
+    return require'nvim-tree.view'.View.width
+  end
+  
+  nvim_tree_events.subscribe('TreeOpen', function()
+    bufferline_state.set_offset(get_tree_size())
+  end)
+  
+  nvim_tree_events.subscribe('Resize', function()
+    bufferline_state.set_offset(get_tree_size())
+  end)
+  
+  nvim_tree_events.subscribe('TreeClose', function()
+    bufferline_state.set_offset(0)
+  end)
+EOF
 
 " LazyGit config
 map <silent><C-g> :LazyGit<cr>
