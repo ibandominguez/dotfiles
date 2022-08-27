@@ -12,7 +12,8 @@
 
 " TODO enhacements & fixes:
 " - Prevent nvim-tree from opening in the right hand side.
-" - Propper workflow in insert mode to move from inside symbol pairs.
+" - Proper workflow in insert mode to move from inside symbol pairs.
+" - Change name of reaming buffer when all buffer are closed.
 
 " Plug plugin manager: https://github.com/junegunn/vim-plug
 " Refer to the docs for installation
