@@ -1,16 +1,9 @@
 " This is my work in progress vim config file
 
-" TODO: List keys of the plugins and extesions to have
-" a quick reference.
-
-" TODO: List system dependencies and installation guide or links
-" Macos: brew install fd ripgrep fzf
-
-" TODO Functionalities:
-" Project search and replace
-" Enhance snippets and create my own ones
-
-" TODO enhacements & fixes:
+" TODO:
+" - List exts deps and install command: brew install fd ripgrep fzf
+" - Project search and replace
+" - Enhance snippets and create my own ones
 " - Prevent nvim-tree from opening in the right hand side.
 " - Proper workflow in insert mode to move from inside symbol pairs.
 " - Change name of reaming buffer when all buffer are closed.
