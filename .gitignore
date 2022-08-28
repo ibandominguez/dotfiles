@@ -1,5 +1,7 @@
 *
 !.gitignore
+!README.md
+!LICENSE
 !.zshrc
 !.tmux.conf
 !.config/
