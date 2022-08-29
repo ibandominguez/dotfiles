@@ -5,6 +5,7 @@
 " - Project search and replace
 " - Enhance snippets and create my own ones
 " - Prevent nvim-tree from opening in the right hand side.
+
 " - Proper workflow in insert mode to move from inside symbol pairs.
 " - Change name of reaming buffer when all buffer are closed.
 
@@ -67,6 +68,9 @@ map <silent><Left> :lua require("notify")("No arrow keys for you", "error")<cr>
 map <silent><Up> :lua require("notify")("No arrow keys for you", "error")<cr> 
 map <silent><Down> :lua require("notify")("No arrow keys for you", "error")<cr> 
 map <silent><Right> :lua require("notify")("No arrow keys for you", "error")<cr> 
+
+" Center search results
+cnoremap <expr><cr> getcmdtype() == '/' ? '<cr>zz' : '<cr>'
 
 " AirlineVim plugin config 
 let g:airline_powerline_fonts = 1
@@ -134,4 +138,4 @@ let g:javascript_plugin_jsdoc = 1
 
 " Vim-jsx-typescript config
 " JSX Support for all files jsx,tsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.js,*.tsx,*.jsx set filetype=typescriptreact
