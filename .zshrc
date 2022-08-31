@@ -109,6 +109,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 export PATH="/usr/local/opt/qt@5/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # vscode alias
 alias code="open -a /Applications/Visual\ Studio\ Code.app"

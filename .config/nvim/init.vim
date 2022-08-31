@@ -26,6 +26,7 @@ call plug#begin()
   Plug 'nvim-telescope/telescope-fzf-native.nvim' " Native fzf to improve performance
 	Plug 'romgrk/barbar.nvim' " Enhanced tabs
 	Plug 'kyazdani42/nvim-tree.lua' " File explorer sidebar
+  Plug 'kyazdani42/nvim-web-devicons' " optional, explorer file icons
 	Plug 'editorconfig/editorconfig-vim' " Editorconfig
 	Plug 'airblade/vim-gitgutter' " Git status lines
 	Plug 'romainl/vim-cool' " Handle search highlight toggle
