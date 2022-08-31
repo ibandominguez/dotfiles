@@ -21,6 +21,11 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<C-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm<CR>"
+lvim.keys.insert_mode["<C-t>"] = ":ToggleTerm<CR>"
+lvim.keys.visual_mode["<C-t>"] = ":ToggleTerm<CR>"
+lvim.keys.insert_mode["jj"] = "<Esc>"
+lvim.keys.insert_mode["jk"] = "<Esc>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -126,6 +131,15 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "black" },
+  {
+    command = "prettier",
+    args = { "--print-width", "100" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "php" },
+  },
+}
 -- local formatters = require "lvim.lsp.null-ls.formatters"
 -- formatters.setup {
 --   { command = "black", filetypes = { "python" } },
@@ -160,13 +174,10 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+  { "editorconfig/editorconfig-vim" },
+  { "terryma/vim-multiple-cursors" }
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
