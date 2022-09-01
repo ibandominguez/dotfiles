@@ -176,7 +176,7 @@ formatters.setup {
 -- Additional Plugins
 lvim.plugins = {
   { "editorconfig/editorconfig-vim" },
-  { "terryma/vim-multiple-cursors" }
+  { "mg979/vim-visual-multi" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

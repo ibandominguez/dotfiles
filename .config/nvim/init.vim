@@ -19,7 +19,7 @@ call plug#begin()
 	Plug 'rafi/awesome-vim-colorschemes' " Colorscheme collection
 	Plug 'neoclide/coc.nvim'  " Auto Completion
 	Plug 'ryanoasis/vim-devicons' " Developer Icons
-	Plug 'terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+	Plug 'mg979/vim-visual-multi' " CTRL + N for multiple cursors
   Plug 'nvim-lua/plenary.nvim' " Telescope required dependency
 	Plug 'nvim-telescope/telescope.nvim' " Latest neovim list fuzzy finder
 	Plug 'nvim-telescope/telescope-file-browser.nvim' " File browser fuzzy finder vscode style
