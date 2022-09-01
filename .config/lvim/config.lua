@@ -137,7 +137,7 @@ formatters.setup {
   {
     command = "prettier",
     args = { "--print-width", "100" },
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "php" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   },
 }
 -- local formatters = require "lvim.lsp.null-ls.formatters"
@@ -175,8 +175,8 @@ formatters.setup {
 
 -- Additional Plugins
 lvim.plugins = {
-  { "editorconfig/editorconfig-vim" },
-  { "mg979/vim-visual-multi" }
+  { "editorconfig/editorconfig-vim" }, -- Editorconfig support
+  { "mg979/vim-visual-multi" } -- Multicursors (Sublime, VSCode like) C-n
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
