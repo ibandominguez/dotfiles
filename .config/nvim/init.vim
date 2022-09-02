@@ -37,6 +37,7 @@ call plug#begin()
   Plug 'leafgarland/typescript-vim' " Typescript extended support
   Plug 'peitalin/vim-jsx-typescript' " TSX, JSX support
   Plug 'rcarriga/nvim-notify' " Vim notifications
+  Plug 'folke/which-key.nvim' " Keymap popup
 call plug#end()
 
 syntax enable
@@ -64,11 +65,14 @@ set clipboard=unnamed " Share clipboard
 set noswapfile " Disable swap file
 set termguicolors " Required for vim notify and other plugins colors to work
 
+" Leader configuration
+let mapleader = " "
+
 " Disable arrow keys
-map <silent><Left> :lua require("notify")("No arrow keys for you", "error")<cr> 
-map <silent><Up> :lua require("notify")("No arrow keys for you", "error")<cr> 
-map <silent><Down> :lua require("notify")("No arrow keys for you", "error")<cr> 
-map <silent><Right> :lua require("notify")("No arrow keys for you", "error")<cr> 
+map <silent><Left> :lua require("notify")("No arrow keys for you", "error")<cr>
+map <silent><Up> :lua require("notify")("No arrow keys for you", "error")<cr>
+map <silent><Down> :lua require("notify")("No arrow keys for you", "error")<cr>
+map <silent><Right> :lua require("notify")("No arrow keys for you", "error")<cr>
 
 " Center search results
 cnoremap <expr><cr> getcmdtype() == '/' ? '<cr>zz' : '<cr>'
@@ -140,3 +144,25 @@ let g:javascript_plugin_jsdoc = 1
 " Vim-jsx-typescript config
 " JSX Support for all files jsx,tsx
 autocmd BufNewFile,BufRead *.js,*.tsx,*.jsx set filetype=typescriptreact
+
+" Keymap popup config
+lua << EOF
+  local wk = require("which-key")
+
+  wk.register({
+    w = { "<cmd>w<cr>", "Save" },
+    g = { "<cmd>LazyGit<cr>", "LazyGit" },
+    f = {
+      name = "File opts",
+      f = { "<cmd>Telescope find_files<cr>", "Find file" },
+      r = { "<cmd>Telescope resume<cr>", "Resume Telescope" }
+    },
+    v = {
+      name = "Vim opts",
+      r = { "<cmd>source %<cr>", "Reload" }
+    }
+  }, { 
+    prefix = "<leader>",
+    nowait = true
+  })
+EOF
