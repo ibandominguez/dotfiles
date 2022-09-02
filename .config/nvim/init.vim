@@ -9,6 +9,27 @@
 " - Proper workflow in insert mode to move from inside symbol pairs.
 " - Change name of reaming buffer when all buffer are closed.
 
+set number
+set relativenumber
+set autoindent
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set softtabstop=2
+set expandtab
+set mouse=a
+set encoding=UTF-8
+set completeopt-=preview 
+set cursorline " Hightlight the current line
+set ignorecase " Ignore case when searching
+set smartcase " Switch to search case sensitive if capital is found
+set incsearch " Show search results as you type
+set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
+set clipboard=unnamed " Share clipboard
+set noswapfile " Disable swap file
+set termguicolors " Required for vim notify and other plugins colors to work
+
 " Plug plugin manager: https://github.com/junegunn/vim-plug
 " Refer to the docs for installation
 call plug#begin()
@@ -40,30 +61,10 @@ call plug#begin()
   Plug 'folke/which-key.nvim' " Keymap popup
 call plug#end()
 
+" General configs
 syntax enable
 colorscheme molokayo
 highlight MatchParen cterm=underline ctermbg=black ctermfg=none
-
-set number
-set relativenumber
-set autoindent
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set smarttab
-set softtabstop=2
-set expandtab
-set mouse=a
-set encoding=UTF-8
-set completeopt-=preview 
-set cursorline " Hightlight the current line
-set ignorecase " Ignore case when searching
-set smartcase " Switch to search case sensitive if capital is found
-set incsearch " Show search results as you type
-set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
-set clipboard=unnamed " Share clipboard
-set noswapfile " Disable swap file
-set termguicolors " Required for vim notify and other plugins colors to work
 
 " Leader configuration
 let mapleader = " "
