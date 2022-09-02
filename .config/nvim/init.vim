@@ -2,33 +2,11 @@
 
 " TODO:
 " - List exts deps and install command: brew install fd ripgrep fzf
-" - Project search and replace
+" - Project text search and replace
 " - Enhance snippets and create my own ones
 " - Prevent nvim-tree from opening in the right hand side.
-
 " - Proper workflow in insert mode to move from inside symbol pairs.
-" - Change name of reaming buffer when all buffer are closed.
-
-set number
-set relativenumber
-set autoindent
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set smarttab
-set softtabstop=2
-set expandtab
-set mouse=a
-set encoding=UTF-8
-set completeopt-=preview 
-set cursorline " Hightlight the current line
-set ignorecase " Ignore case when searching
-set smartcase " Switch to search case sensitive if capital is found
-set incsearch " Show search results as you type
-set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
-set clipboard=unnamed " Share clipboard
-set noswapfile " Disable swap file
-set termguicolors " Required for vim notify and other plugins colors to work
+" - Change name of default empty buffer
 
 " Plug plugin manager: https://github.com/junegunn/vim-plug
 " Refer to the docs for installation
@@ -62,11 +40,34 @@ call plug#begin()
 call plug#end()
 
 " General configs
-syntax enable
+set number
+set relativenumber
+set autoindent
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set softtabstop=2
+set expandtab
+set mouse=a
+set encoding=UTF-8
+set completeopt-=preview 
+set cursorline " Hightlight the current line
+set ignorecase " Ignore case when searching
+set smartcase " Switch to search case sensitive if capital is found
+set incsearch " Show search results as you type
+set guicursor=n-v-c:block,i-ci-ve:ver30-blinkwait300-blinkon200-blinkoff150 " cursor insert mode blink
+set clipboard=unnamed " Share clipboard
+set noswapfile " Disable swap file
+set termguicolors " Required for vim notify and other plugins colors to work
+
+" Colorscheme theme
 colorscheme molokayo
+
+" Hightlight overwrites
 highlight MatchParen cterm=underline ctermbg=black ctermfg=none
 
-" Leader configuration
+" Change default leader to space
 let mapleader = " "
 
 " Disable arrow keys
@@ -93,12 +94,6 @@ inoremap <silent><expr><CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <expr><Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
-" Find files using Telescope command-line sugar.
-" TODO: Find a way to be able to go :Telescope resume
-" that can differentiate between find_files and live_grep
-map <C-p> :Telescope find_files<cr>
-map <C-f> :Telescope live_grep<cr>
-
 " Barbar, enhanced tabs configs and maps
 highlight BufferInactive cterm=none ctermbg=none ctermfg=darkgrey
 map <silent><C-h> :BufferPrevious<cr>
@@ -111,7 +106,6 @@ map <silent><C-W> :BufferClose<cr>
 " d: delete the file or dir on the current cursor
 " r: rename the file or dir on the current cursor
 lua require'nvim-tree'.setup {}
-map <silent><C-b> :NvimTreeToggle<cr>
 
 " Barbar-Nvim-tree integration
 " Adjust tabs to the sidebar
@@ -136,9 +130,6 @@ lua <<EOF
   end)
 EOF
 
-" LazyGit config
-map <silent><C-g> :LazyGit<cr>
-
 " Javascript support
 let g:javascript_plugin_jsdoc = 1
 
@@ -151,19 +142,22 @@ lua << EOF
   local wk = require("which-key")
 
   wk.register({
+    e = { "<cmd>NvimTreeToggle<cr>", "File explorer" },
     w = { "<cmd>w<cr>", "Save" },
+    q = { "<cmd>qa!<cr>", "Quit!" },
     g = { "<cmd>LazyGit<cr>", "LazyGit" },
     f = {
-      name = "File opts",
-      f = { "<cmd>Telescope find_files<cr>", "Find file" },
-      r = { "<cmd>Telescope resume<cr>", "Resume Telescope" }
+      name = "Find commands",
+      f = { "<cmd>Telescope find_files<cr>", "Find files" },
+      r = { "<cmd>Telescope registers<cr>", "Find registers" },
+      b = { "<cmd>Telescope resume<cr>", "Find (resume back)" },
+      t = { "<cmd>Telescope live_grep<cr>", "Find text" }
     },
     v = {
-      name = "Vim opts",
+      name = "Editor options",
       r = { "<cmd>source %<cr>", "Reload" }
     }
   }, { 
-    prefix = "<leader>",
-    nowait = true
+    prefix = "<leader>"
   })
 EOF
