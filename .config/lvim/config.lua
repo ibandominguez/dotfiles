@@ -1,33 +1,33 @@
 --[[
+
 lvim is the global options object
 
 Linters should be
 filled in as strings with either
 a global executable or a path to
 an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+
+--]]
 
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
--- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
+-- lvim.use_icons = false -- to disable icons and use a minimalist setup, uncomment the following
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<C-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm<CR>"
-lvim.keys.insert_mode["<C-t>"] = ":ToggleTerm<CR>"
-lvim.keys.visual_mode["<C-t>"] = ":ToggleTerm<CR>"
 lvim.keys.insert_mode["jj"] = "<Esc>"
 lvim.keys.insert_mode["jk"] = "<Esc>"
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
+
 -- override a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 
@@ -91,11 +91,12 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
 
--- -- make sure server will always be installed even if the server is in skipped_servers list
+-- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
   "sumeko_lua",
   "jsonls",
 }
+
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
@@ -130,7 +131,7 @@ lvim.lsp.installer.setup.ensure_installed = {
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- -- set a formatter, this will override the language server formatting capabilities (if it exists)
+-- Formatters
 local formatters = require "lvim.lsp.null-ls.formatters"
 
 formatters.setup {
@@ -142,20 +143,26 @@ formatters.setup {
   },
 }
 
--- Additional linters
+-- Linters
 local linters = require "lvim.lsp.null-ls.linters"
 
 linters.setup {
   {
     command = "eslint",
-    filetypes = { "javascript", "javascriptreact" },
+    filetypes = { "javascript", "javascriptreact", 'typescript', 'typescriptreact' },
   },
 }
 
--- Additional Plugins
+-- Plugins
 lvim.plugins = {
   { "editorconfig/editorconfig-vim" }, -- Editorconfig support
-  { "mg979/vim-visual-multi" } -- Multicursors (Sublime, VSCode like) C-n
+  { "mg979/vim-visual-multi" }, -- Multicursors (Sublime, VSCode like) C-n
+  { -- Auto close and renames tags
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
