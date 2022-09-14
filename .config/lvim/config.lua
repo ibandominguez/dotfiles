@@ -84,6 +84,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "rust",
   "java",
   "yaml",
+  "php",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -93,7 +94,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
-  "sumeko_lua",
   "jsonls",
 }
 
