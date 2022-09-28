@@ -94,6 +94,9 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
+  "tailwindcss",
+  "eslint",
+  "tsserver",
   "jsonls",
 }
 
@@ -135,11 +138,10 @@ lvim.lsp.installer.setup.ensure_installed = {
 local formatters = require "lvim.lsp.null-ls.formatters"
 
 formatters.setup {
-  { command = "black" },
   {
     command = "prettier",
     args = { "--print-width", "100", "--trailing-comma", "none", "--no-semi" },
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
   },
 }
 
