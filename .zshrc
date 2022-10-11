@@ -114,7 +114,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # vscode alias
 alias code="open -a /Applications/Visual\ Studio\ Code.app"
 
-
 # Install plugins function
 function install_ohmyzsh_plugins() {
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
