@@ -141,7 +141,7 @@ formatters.setup {
   {
     command = "prettier",
     args = { "--print-width", "100", "--trailing-comma", "none", "--no-semi", "--single-quote" },
-    filetypes = { "javascript", "javascriptreact" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
 }
 
@@ -152,6 +152,10 @@ linters.setup {
   {
     command = "standardjs",
     filetypes = { "javascript", "javascriptreact" },
+  },
+  {
+    command = "tsc",
+    filetypes = { "typescript", "typescriptreact" },
   },
 }
 
