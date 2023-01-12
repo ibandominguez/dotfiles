@@ -140,8 +140,8 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
     command = "prettier",
-    args = { "--print-width", "100", "--trailing-comma", "none", "--no-semi" },
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "json" },
+    args = { "--print-width", "100", "--trailing-comma", "none", "--no-semi", "--single-quote" },
+    filetypes = { "javascript", "javascriptreact" },
   },
 }
 
@@ -150,8 +150,8 @@ local linters = require "lvim.lsp.null-ls.linters"
 
 linters.setup {
   {
-    command = "eslint",
-    filetypes = { "javascript", "javascriptreact", 'typescript', 'typescriptreact' },
+    command = "standardjs",
+    filetypes = { "javascript", "javascriptreact" },
   },
 }
 
