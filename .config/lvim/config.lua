@@ -2,10 +2,8 @@
 
 lvim is the global options object
 
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
+Linters should be filled in as strings with either
+a global executable or a path to an executable
 
 --]]
 
@@ -18,12 +16,18 @@ lvim.colorscheme = "onedarker"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
+-- Refer to https://www.lunarvim.org/docs/keybind-overview for defaults table
+-- Quick reminder commands:
+-- <C-\>: Toggle terminal
+-- Normal: <Tab>,<S-Tab>: Navigate tabs
+-- Normal: <C-h,j,k,l>: Navigate windows
+
 -- add your own keymapping
-lvim.keys.normal_mode["<C-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<C-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<Tab>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm<CR>"
 lvim.keys.insert_mode["jj"] = "<Esc>"
-lvim.keys.insert_mode["jk"] = "<Esc>"
+lvim.keys.insert_mode["kk"] = "<Esc>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -33,22 +37,22 @@ lvim.keys.insert_mode["jk"] = "<Esc>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
-local _, actions = pcall(require, "telescope.actions")
+-- local _, actions = pcall(require, "telescope.actions")
 
-lvim.builtin.telescope.defaults.mappings = {
-  -- for input mode
-  i = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
-    ["<C-n>"] = actions.cycle_history_next,
-    ["<C-p>"] = actions.cycle_history_prev,
-  },
-  -- for normal mode
-  n = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
-  },
-}
+-- lvim.builtin.telescope.defaults.mappings = {
+--   -- for input mode
+--   i = {
+--     ["<C-j>"] = actions.move_selection_next,
+--     ["<C-k>"] = actions.move_selection_previous,
+--     ["<C-n>"] = actions.cycle_history_next,
+--     ["<C-p>"] = actions.cycle_history_prev,
+--   },
+--   -- for normal mode
+--   n = {
+--     ["<C-j>"] = actions.move_selection_next,
+--     ["<C-k>"] = actions.move_selection_previous,
+--   },
+-- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
@@ -76,6 +80,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "c",
   "javascript",
   "json",
+  "markdown",
   "lua",
   "python",
   "typescript",
@@ -143,6 +148,10 @@ formatters.setup {
     args = { "--print-width", "100", "--trailing-comma", "none", "--no-semi", "--single-quote" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
   },
+  {
+    command = "phpcsfixer",
+    filetypes = { "php" },
+  },
 }
 
 -- Linters
@@ -161,8 +170,10 @@ linters.setup {
 
 -- Plugins
 lvim.plugins = {
-  { "editorconfig/editorconfig-vim" }, -- Editorconfig support
-  { "mg979/vim-visual-multi" }, -- Multicursors (Sublime, VSCode like) C-n
+  -- Editorconfig support
+  { "editorconfig/editorconfig-vim" },
+  -- Multicursors (Sublime, VSCode like) C-n
+  { "mg979/vim-visual-multi" },
   { -- Auto close and renames tags
     "windwp/nvim-ts-autotag",
     config = function()
