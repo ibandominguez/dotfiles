@@ -112,8 +112,9 @@ export PATH="/usr/local/opt/qt@5/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# vscode alias
+# aliases
 alias code="open -a /Applications/Visual\ Studio\ Code.app"
+alias btop="bpytop"
 
 # Install plugins function
 function install_ohmyzsh_plugins() {
