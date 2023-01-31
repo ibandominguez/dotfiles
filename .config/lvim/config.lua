@@ -25,9 +25,6 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<Tab>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<C-t>"] = ":ToggleTerm<CR>"
-lvim.keys.insert_mode["jj"] = "<Esc>"
-lvim.keys.insert_mode["kk"] = "<Esc>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
