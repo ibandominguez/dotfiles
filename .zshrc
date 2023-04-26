@@ -114,7 +114,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # aliases
 alias code="open -a /Applications/Visual\ Studio\ Code.app"
-alias btop="bpytop"
+alias top="bpytop"
+alias htop="bpytop"
 
 # Install plugins function
 function install_ohmyzsh_plugins() {
