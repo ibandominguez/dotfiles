@@ -84,10 +84,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# export LANG=en_US.UTF-8
 # export MANPATH="/usr/local/man:$MANPATH"
+# export ARCHFLAGS="-arch x86_64"
+export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
+export PATH="$HOME/.local/bin:$PATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -96,26 +99,21 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
-export PATH="/usr/local/opt/qt@5/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# aliases
-alias code="open -a /Applications/Visual\ Studio\ Code.app"
 alias top="bpytop"
 alias htop="bpytop"
+
+# MacOs Related configs
+if [[ "$OSTYPE" == darwin* ]]; then
+  # defaults write com.apple.finder AppleShowAllFiles -bool true # Show hidden files
+  # defaults write com.apple.dock autohide -bool true # Auto hide dock
+  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true # Secondary Right click
+fi
+
+# User functions
 
 # Install plugins function
 function install_ohmyzsh_plugins() {
