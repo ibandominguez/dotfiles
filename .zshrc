@@ -89,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
 
