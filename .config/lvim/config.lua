@@ -171,6 +171,7 @@ lvim.plugins = {
   { "editorconfig/editorconfig-vim" },
   -- Multicursors (Sublime, VSCode like) C-n
   { "mg979/vim-visual-multi" },
+  { "christoomey/vim-tmux-navigator" },
   { -- Auto close and renames tags
     "windwp/nvim-ts-autotag",
     config = function()
