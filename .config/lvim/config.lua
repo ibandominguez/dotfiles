@@ -165,14 +165,13 @@ linters.setup {
   },
 }
 
--- Plugins
+-- User Plugins
 lvim.plugins = {
-  -- Editorconfig support
-  { "editorconfig/editorconfig-vim" },
-  -- Multicursors (Sublime, VSCode like) C-n
-  { "mg979/vim-visual-multi" },
-  { "christoomey/vim-tmux-navigator" },
-  { -- Auto close and renames tags
+  { "editorconfig/editorconfig-vim" },  -- Editorconfig support
+  { "mg979/vim-visual-multi" },         -- Multicursors (Sublime, VSCode like) C-n
+  { "christoomey/vim-tmux-navigator" }, -- Tmux and Vim navigation using Ctrl+(jkhl)
+  { "tpope/vim-surround" },             -- https://github.com/tpope/vim-surround
+  {                                     -- Auto close and renames tags
     "windwp/nvim-ts-autotag",
     config = function()
       require("nvim-ts-autotag").setup()
