@@ -171,12 +171,42 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },         -- Multicursors (Sublime, VSCode like) C-n
   { "christoomey/vim-tmux-navigator" }, -- Tmux and Vim navigation using Ctrl+(jkhl)
   { "tpope/vim-surround" },             -- https://github.com/tpope/vim-surround
-  {                                     -- Auto close and renames tags
+  { 'MunifTanjim/nui.nvim' },           -- Cmd dialog input dependencies
+  {                                     -- Live Diagnostics on typing
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function() require "lsp_signature".on_attach() end,
+  },
+  { -- Auto close and renames tags
     "windwp/nvim-ts-autotag",
     config = function()
       require("nvim-ts-autotag").setup()
     end
   },
+  { -- Experimental UI (Command line, search and messages)
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
+        },
+      })
+    end
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
