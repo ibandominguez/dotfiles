@@ -43,11 +43,11 @@ formatters.setup {
   {
     name = "prettier",
     args = { "--print-width", "100", "--trailing-comma", "none", "--no-semi", "--single-quote" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
   },
   {
     name = "phpcsfixer",
-    filetypes = { "php" },
+    filetypes = { "php" }
   },
 }
 
@@ -57,12 +57,12 @@ local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   {
     name = "standardjs",
-    filetypes = { "javascript", "javascriptreact" },
+    filetypes = { "javascript", "javascriptreact" }
   },
   {
     name = "tsc",
-    filetypes = { "typescript", "typescriptreact" },
-  },
+    filetypes = { "typescript", "typescriptreact" }
+  }
 }
 
 -- User Plugins
@@ -71,12 +71,13 @@ lvim.plugins = {
   { "mg979/vim-visual-multi" },         -- Multicursors (Sublime, VSCode like) C-n
   { "christoomey/vim-tmux-navigator" }, -- Tmux and Vim navigation using Ctrl+(jkhl)
   { "tpope/vim-surround" },             -- https://github.com/tpope/vim-surround
-  { 'MunifTanjim/nui.nvim' },           -- Cmd dialog input dependencies
   -- Live Diagnostics on typing
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
-    config = function() require "lsp_signature".on_attach() end,
+    config = function()
+      require "lsp_signature".on_attach()
+    end
   },
   -- Auto close and renames tags
   {
@@ -89,6 +90,7 @@ lvim.plugins = {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    dependencies = { 'MunifTanjim/nui.nvim' },
     config = function()
       require("noice").setup({
         lsp = {
@@ -96,8 +98,8 @@ lvim.plugins = {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
-          },
+            ["cmp.entry.get_documentation"] = true
+          }
         },
         -- you can enable a preset for easier configuration
         presets = {
@@ -106,7 +108,7 @@ lvim.plugins = {
           long_message_to_split = true, -- long messages will be sent to a split
           inc_rename = false,           -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = false,       -- add a border to hover docs and signature help
-        },
+        }
       })
     end
   }
@@ -116,12 +118,12 @@ lvim.plugins = {
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
 --   -- enable wrap mode for json files only
---   command = "setlocal wrap",
+--   command = "setlocal wrap"
 -- })
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
 --   callback = function()
 --     -- let treesitter use bash highlight for zsh files as well
 --     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
+--   end
 -- })
