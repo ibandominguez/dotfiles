@@ -26,14 +26,9 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Lsp Setting, ensured installed
 lvim.lsp.installer.setup.ensure_installed = {
-  "bashls",
-  "cssls",
-  "html",
   "tailwindcss",
-  "eslint",
   "tsserver",
   "jsonls",
-  "pylsp"
 }
 
 -- Formatters
@@ -72,13 +67,13 @@ lvim.plugins = {
   { "christoomey/vim-tmux-navigator" }, -- Tmux and Vim navigation using Ctrl+(jkhl)
   { "tpope/vim-surround" },             -- https://github.com/tpope/vim-surround
   -- Live Diagnostics on typing
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function()
-      require "lsp_signature".on_attach()
-    end
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require "lsp_signature".on_attach()
+  --   end
+  -- },
   -- Auto close and renames tags
   {
     "windwp/nvim-ts-autotag",
