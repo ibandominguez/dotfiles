@@ -93,6 +93,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # You may need to manually set your language environment
 
+# Terminal colors
+# For some reason tmux needs this to be exported so the mouse mode works
+export TERM=xterm-256color
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
