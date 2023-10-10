@@ -14,3 +14,9 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank { higroup = "IncSearch", timeout = 500 }
   end,
 })
+
+autocmd({ "VimEnter" }, {
+  callback = function()
+    require("nvim-tree.api").tree.open()
+  end,
+})
