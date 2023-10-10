@@ -8,4 +8,8 @@
 !.config/lvim/
 !.config/lvim/config.lua
 !.config/nvim/lua/custom/
-!.config/nvim/lua/custom/*
+!.config/nvim/lua/custom/chadrc.lua
+!.config/nvim/lua/custom/highlights.lua
+!.config/nvim/lua/custom/init.lua
+!.config/nvim/lua/custom/mappings.lua
+!.config/nvim/lua/custom/plugins.lua
