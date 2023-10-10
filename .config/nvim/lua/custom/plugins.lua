@@ -16,7 +16,10 @@ local plugins = {
             debug = true,
             sources = {
               -- webdev stuff
-              b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+              -- choosed deno for ts/js files cuz its very fast!
+              b.formatting.deno_fmt.with {
+                extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
+              },
               b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
               -- Lua
               b.formatting.stylua,
