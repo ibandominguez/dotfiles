@@ -8,7 +8,8 @@
 !.config/lvim/
 !.config/lvim/config.lua
 !.config/nvim/
-.config/nvim/LICENSE
+.config/nvim/*
+.config/nvim/plugins/*
 !.config/nvim/lua
 !.config/nvim/lua/custom/
 !.config/nvim/lua/custom/*
