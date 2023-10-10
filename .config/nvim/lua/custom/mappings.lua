@@ -67,7 +67,7 @@ M.telescope = {
     ["<leader>fa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find All" },
     ["<leader>fb"] = { ":Telescope buffers <CR>", "Find Buffers" },
     ["<leader>fd"] = { ":Telescope diagnostics <CR>", "Find Diagnostics" },
-    ["<leader>ff"] = { ":Telescope find_files <CR>", "Find Files" },
+    ["<leader>ff"] = { ":Telescope git_files <CR>", "Find Files" },
     ["<leader>fl"] = { ":Telescope resume <CR>", "Find LastSearch" },
     ["<leader>fh"] = { ":Telescope help_tags <CR>", "Find HelpTags" },
     ["<leader>ft"] = { ":Telescope live_grep <CR>", "Find Text" },
@@ -76,6 +76,7 @@ M.telescope = {
     ["<leader>fo"] = { ":Telescope oldfiles <CR>", "Find Oldfiles" },
     ["<leader>fr"] = { ":Telescope registers <CR>", "Find Registers" },
     ["<leader>fc"] = { ":Telescope current_buffer_fuzzy_find <CR>", "Find InCurrentBuffer" },
+    ["<leader>fx"] = { ":Telescope commands <CR>", "Find Commands" },
   },
 }
 
