@@ -7,3 +7,5 @@
 !.config/
 !.config/lvim/
 !.config/lvim/config.lua
+!.config/nvim/lua/custom/
+!.config/nvim/lua/custom/*
