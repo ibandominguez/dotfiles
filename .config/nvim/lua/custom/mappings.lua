@@ -25,15 +25,35 @@ M.nvchad = {
   },
 }
 
+M.debugging = {
+  n = {
+    ["<leader>d"] = { "+Debug" },
+    ["<leader>dU"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "Toggle DebugUI",
+    },
+    ["<leader>db"] = { "TODO: StepBack" },
+    ["<leader>di"] = { "TODO: StepInto" },
+    ["<leader>do"] = { "TODO: StepOver" },
+    ["<leader>dC"] = { "TODO: RunToCursor" },
+    ["<leader>dc"] = { "TODO: Continue" },
+    ["<leader>dd"] = { "TODO: Disconnect" },
+    ["<leader>dg"] = { "TODO: GetSession" },
+    ["<leader>dp"] = { "TODO: Pause" },
+    ["<leader>dq"] = { "TODO: Quit" },
+    ["<leader>dr"] = { "TODO: ToggleRepl" },
+    ["<leader>ds"] = { "TODO: Start" },
+    ["<leader>dt"] = { "TODO: ToggleBreakpoint" },
+    ["<leader>du"] = { "TODO: StepOut" },
+  },
+}
+
 M.buffers = {
   n = {
     ["<leader>b"] = { "+Buffers" },
-    ["<leader>bn"] = {
-      function()
-        print "TODO!!!!!"
-      end,
-      "New buffer",
-    },
+    ["<leader>bn"] = { "TODO: Newbuffer" },
     ["<leader>bc"] = {
       function()
         require("nvchad.tabufline").close_buffer()
@@ -63,20 +83,20 @@ M.buffers = {
 
 M.telescope = {
   n = {
-    ["<leader>f"] = { "+Find" },
-    ["<leader>fa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find All" },
-    ["<leader>fb"] = { ":Telescope buffers <CR>", "Find Buffers" },
-    ["<leader>fd"] = { ":Telescope diagnostics <CR>", "Find Diagnostics" },
-    ["<leader>ff"] = { ":Telescope git_files <CR>", "Find Files" },
-    ["<leader>fl"] = { ":Telescope resume <CR>", "Find LastSearch" },
-    ["<leader>fh"] = { ":Telescope help_tags <CR>", "Find HelpTags" },
-    ["<leader>ft"] = { ":Telescope live_grep <CR>", "Find Text" },
-    ["<leader>fu"] = { ":Telescope themes <CR>", "Find UIThemes" },
-    ["<leader>fm"] = { ":Telescope marks <CR>", "Find Markers" },
-    ["<leader>fo"] = { ":Telescope oldfiles <CR>", "Find Oldfiles" },
-    ["<leader>fr"] = { ":Telescope registers <CR>", "Find Registers" },
-    ["<leader>fc"] = { ":Telescope current_buffer_fuzzy_find <CR>", "Find InCurrentBuffer" },
-    ["<leader>fx"] = { ":Telescope commands <CR>", "Find Commands" },
+    ["<leader>s"] = { "+Search" },
+    ["<leader>sa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find AllFiles" },
+    ["<leader>sb"] = { ":Telescope buffers <CR>", "Find Buffers" },
+    ["<leader>sd"] = { ":Telescope diagnostics <CR>", "Find Diagnostics" },
+    ["<leader>sf"] = { ":Telescope git_files <CR>", "Find Files" },
+    ["<leader>sl"] = { ":Telescope resume <CR>", "Find LastSearch" },
+    ["<leader>sh"] = { ":Telescope help_tags <CR>", "Find HelpTags" },
+    ["<leader>st"] = { ":Telescope live_grep <CR>", "Find Text" },
+    ["<leader>su"] = { ":Telescope themes <CR>", "Find UIThemes" },
+    ["<leader>sm"] = { ":Telescope marks <CR>", "Find Markers" },
+    ["<leader>so"] = { ":Telescope oldfiles <CR>", "Find Oldfiles" },
+    ["<leader>sr"] = { ":Telescope registers <CR>", "Find Registers" },
+    ["<leader>sc"] = { ":Telescope current_buffer_fuzzy_find <CR>", "Find InCurrentBuffer" },
+    ["<leader>sx"] = { ":Telescope commands <CR>", "Find Commands" },
   },
 }
 
@@ -111,6 +131,7 @@ M.general = {
       end,
       "Write (Formatting)",
     },
+    ["<leader>f"] = { ":Telescope git_files <CR>", "Find Files" },
     ["<leader>h"] = { ":noh <CR>", "Hightlight Clear" },
     ["<leader>q"] = { ":q <CR>", "Quit" },
     ["<leader>e"] = { ":NvimTreeToggle <CR>", "Explorer (Toggle)" },
@@ -152,6 +173,8 @@ M.disabled = {
     ["<leader>ca"] = "",
     ["<leader>cm"] = "",
     ["<leader>b"] = "",
+    ["<leader>d"] = "",
+    ["<leader>dt"] = "",
     ["<leader>D"] = "",
     ["<leader>e"] = "",
     ["<leader>h"] = "",
