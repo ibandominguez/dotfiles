@@ -10,6 +10,17 @@ M.ui = {
 
   hl_override = highlights.override,
   hl_add = highlights.add,
+
+  nvdash = {
+    buttons = {
+      { "  Find File", "Spc f", "Telescope find_files" },
+      { "󰈚  Recent Files", "Spc s o", "Telescope oldfiles" },
+      { "󰈭  Find Text", "Spc s t", "Telescope live_grep" },
+      { "  Bookmarks", "Spc s m", "Telescope marks" },
+      { "  UiThemes", "Spc s u", "Telescope themes" },
+      { "  Mappings", "Spc n s", "NvCheatsheet" },
+    },
+  },
 }
 
 M.plugins = "custom.plugins"
