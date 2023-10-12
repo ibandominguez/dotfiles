@@ -28,25 +28,90 @@ M.nvchad = {
 M.debugging = {
   n = {
     ["<leader>d"] = { "+Debug" },
+    ["<leader>ds"] = {
+      function()
+        require("dap").start()
+      end,
+      "Start",
+    },
+    ["<leader>dp"] = {
+      function()
+        require("dap").pause()
+      end,
+      "Pause",
+    },
+    ["<leader>dc"] = {
+      function()
+        require("dap").continue()
+      end,
+      "Continue",
+    },
+    ["<leader>dC"] = {
+      function()
+        require("dap").run_to_cursor()
+      end,
+      "Run To Cursor",
+    },
+    ["<leader>dg"] = {
+      function()
+        require("dap").get_session()
+      end,
+      "Get Session",
+    },
+    ["<leader>dd"] = {
+      function()
+        require("dap").disconnect()
+      end,
+      "Disconnect",
+    },
+    ["<leader>dq"] = {
+      function()
+        require("dap").quit()
+      end,
+      "Quit",
+    },
+    ["<leader>db"] = {
+      function()
+        require("dap").step_back()
+      end,
+      "Step Back",
+    },
+    ["<leader>di"] = {
+      function()
+        require("dap").step_into()
+      end,
+      "Step Into",
+    },
+    ["<leader>do"] = {
+      function()
+        require("dap").step_over()
+      end,
+      "Step Over",
+    },
+    ["<leader>du"] = {
+      function()
+        require("dap").step_out()
+      end,
+      "Step Out",
+    },
+    ["<leader>dt"] = {
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      "Toggle Breakpoint",
+    },
+    ["<leader>dr"] = {
+      function()
+        require("dapui").toggle_repl()
+      end,
+      "Toggle Repl",
+    },
     ["<leader>dU"] = {
       function()
         require("dapui").toggle()
       end,
       "Toggle DebugUI",
     },
-    ["<leader>db"] = { "TODO: StepBack" },
-    ["<leader>di"] = { "TODO: StepInto" },
-    ["<leader>do"] = { "TODO: StepOver" },
-    ["<leader>dC"] = { "TODO: RunToCursor" },
-    ["<leader>dc"] = { "TODO: Continue" },
-    ["<leader>dd"] = { "TODO: Disconnect" },
-    ["<leader>dg"] = { "TODO: GetSession" },
-    ["<leader>dp"] = { "TODO: Pause" },
-    ["<leader>dq"] = { "TODO: Quit" },
-    ["<leader>dr"] = { "TODO: ToggleRepl" },
-    ["<leader>ds"] = { "TODO: Start" },
-    ["<leader>dt"] = { "TODO: ToggleBreakpoint" },
-    ["<leader>du"] = { "TODO: StepOut" },
   },
 }
 
@@ -172,6 +237,7 @@ M.disabled = {
     ["<leader>cc"] = "",
     ["<leader>ca"] = "",
     ["<leader>cm"] = "",
+    ["<leader>ch"] = "",
     ["<leader>b"] = "",
     ["<leader>d"] = "",
     ["<leader>dt"] = "",
@@ -184,6 +250,12 @@ M.disabled = {
     ["<leader>x"] = "",
     ["<leader>w"] = "",
     ["<leader>f"] = "",
+    ["<leader>fa"] = "",
+    ["<leader>fb"] = "",
+    ["<leader>ff"] = "",
+    ["<leader>fh"] = "",
+    ["<leader>fm"] = "",
+    ["<leader>fo"] = "",
     ["<leader>fw"] = "",
     ["<leader>fz"] = "",
     ["<leader>l"] = "",
