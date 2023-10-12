@@ -11,6 +11,8 @@ M.ui = {
   hl_override = highlights.override,
   hl_add = highlights.add,
 
+  lsp_semantic_tokens = true, -- required for tailwindcss lsp to work
+
   nvdash = {
     buttons = {
       { "  Find File", "Spc f", "Telescope find_files" },
