@@ -118,7 +118,7 @@ M.debugging = {
 M.buffers = {
   n = {
     ["<leader>b"] = { "+Buffers" },
-    ["<leader>bn"] = { ":edit " .. vim.fn.getcwd() .. "", "New buffer" },
+    ["<leader>bn"] = { ":edit " .. vim.fn.getcwd() .. "/", "New buffer" },
     ["<leader>bc"] = {
       function()
         require("nvchad.tabufline").close_buffer()
