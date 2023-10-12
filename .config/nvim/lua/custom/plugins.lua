@@ -1,30 +1,21 @@
 ---@type NvPluginSpec[]
 local plugins = {
 
-  -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
           local null_ls = require "null-ls"
-          local b = null_ls.builtins
+          local builtins = null_ls.builtins
           null_ls.setup {
             debug = true,
             sources = {
-              -- webdev stuff
-              -- choosed deno for ts/js files cuz its very fast!
-              b.formatting.deno_fmt.with {
-                extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
-              },
-              b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
-              -- Lua
-              b.formatting.stylua,
-              -- cpp
-              b.formatting.clang_format,
+              builtins.formatting.deno_fmt.with { extra_args = { "--no-semicolons", "--line-width", "120" } }, -- Fast!
+              builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "json" } }, -- Prettier only these filetypes
+              builtins.formatting.stylua,
+              builtins.formatting.clang_format,
             },
           }
         end,
@@ -35,9 +26,8 @@ local plugins = {
       local on_attach = require("plugins.configs.lspconfig").on_attach
       local capabilities = require("plugins.configs.lspconfig").capabilities
       local lspconfig = require "lspconfig"
-      -- if you just want default config for the servers then put them in a table
-      local servers = { "html", "cssls", "tsserver", "clangd" }
-      for _, lsp in ipairs(servers) do
+      local default_servers = { "html", "cssls", "tsserver", "clangd", "tailwindcss" } -- Add servers for default config
+      for _, lsp in ipairs(default_servers) do
         lspconfig[lsp].setup {
           on_attach = on_attach,
           capabilities = capabilities,
@@ -46,23 +36,18 @@ local plugins = {
     end,
   },
 
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        -- lua stuff
         "lua-language-server",
         "stylua",
-
-        -- web dev stuff
         "css-lsp",
         "html-lsp",
         "typescript-language-server",
         "deno",
         "prettier",
-
-        -- c/cpp stuff
+        "tailwindcss-language-server",
         "clangd",
         "clang-format",
       },
@@ -86,9 +71,7 @@ local plugins = {
       },
       indent = {
         enable = true,
-        -- disable = {
-        --   "python"
-        -- },
+        -- disable = { "python" },
       },
     },
   },
@@ -99,7 +82,6 @@ local plugins = {
       git = {
         enable = true,
       },
-
       renderer = {
         highlight_git = true,
         icons = {
@@ -111,7 +93,8 @@ local plugins = {
     },
   },
 
-  -- Install a plugin
+  -- Custom Plugins
+
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -120,37 +103,32 @@ local plugins = {
     end,
   },
 
-  -- Multicursors (Sublime, VSCode like) C-n
   {
-    "mg979/vim-visual-multi",
-    lazy = false,
+    "mg979/vim-visual-multi", -- Multicursors (Sublime, VSCode like) C-n
+    event = "VeryLazy",
   },
 
-  -- Tmux and Vim navigation using Ctrl+(jkhl)
   {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
+    "christoomey/vim-tmux-navigator", -- Tmux and Vim navigation using Ctrl+(jkhl)
+    event = "VeryLazy",
   },
 
-  -- https://github.com/tpope/vim-surround
   {
-    "tpope/vim-surround",
-    lazy = false,
+    "tpope/vim-surround", -- https://github.com/tpope/vim-surround
+    event = "VeryLazy",
   },
 
-  -- Auto close and renames tags
   {
-    "windwp/nvim-ts-autotag",
+    "windwp/nvim-ts-autotag", -- Auto close and renames tags
     lazy = false,
     config = function()
       require("nvim-ts-autotag").setup()
     end,
   },
 
-  -- LazyGit within neovim
   {
-    "kdheepak/lazygit.nvim",
-    lazy = false,
+    "kdheepak/lazygit.nvim", -- LazyGit within neovim
+    event = "VeryLazy",
     config = function()
       require("lazy").setup {
         { "kdheepak/lazygit.nvim" },
@@ -158,22 +136,19 @@ local plugins = {
     end,
   },
 
-  -- Experimental UI (Command line, search and messages)
   {
-    "folke/noice.nvim",
+    "folke/noice.nvim", -- Experimental UI (Command line, search and messages)
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
       require("noice").setup {
         lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true,
           },
         },
-        -- you can enable a preset for easier configuration
         presets = {
           bottom_search = true, -- use a classic bottom cmdline for search
           command_palette = true, -- position the cmdline and popupmenu together
