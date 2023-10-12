@@ -4,23 +4,23 @@ local M = {}
 M.git = {
   n = {
     ["<leader>g"] = { "+Git" },
-    ["<leader>gb"] = { ":Gitsigns blame_line <CR>", "GitBlame Line" },
+    ["<leader>gb"] = { ":Gitsigns blame_line <CR>", "Git blame" },
     ["<leader>gg"] = { ":LazyGit <CR>", "LazyGit" },
-    ["<leader>gc"] = { ":Telescope git_commits <CR>", "Git Commits" },
+    ["<leader>gc"] = { ":Telescope git_commits <CR>", "Git commits" },
   },
 }
 
 M.nvchad = {
   n = {
     ["<leader>n"] = { "+NvChad" },
-    ["<leader>nd"] = { ":Nvdash <CR>", "Nvdash" },
-    ["<leader>nu"] = { ":NvChadUpdate <CR>", "NvChad Update" },
-    ["<leader>ns"] = { ":NvCheatsheet <CR>", "NvChad CheatSheet" },
+    ["<leader>nd"] = { ":Nvdash <CR>", "Dashboard" },
+    ["<leader>nu"] = { ":NvChadUpdate <CR>", "Update" },
+    ["<leader>ns"] = { ":NvCheatsheet <CR>", "CheatSheet" },
     ["<leader>nr"] = {
       function()
         require("plenary.reload").reload_module "custom.init"
       end,
-      "NvChad Reload",
+      "Reload",
     },
   },
 }
@@ -50,13 +50,13 @@ M.debugging = {
       function()
         require("dap").run_to_cursor()
       end,
-      "Run To Cursor",
+      "Run to cursor",
     },
     ["<leader>dg"] = {
       function()
         require("dap").session()
       end,
-      "Get Session",
+      "Get session",
     },
     ["<leader>dd"] = {
       function()
@@ -74,43 +74,43 @@ M.debugging = {
       function()
         require("dap").step_back()
       end,
-      "Step Back",
+      "Step back",
     },
     ["<leader>di"] = {
       function()
         require("dap").step_into()
       end,
-      "Step Into",
+      "Step into",
     },
     ["<leader>do"] = {
       function()
         require("dap").step_over()
       end,
-      "Step Over",
+      "Step over",
     },
     ["<leader>du"] = {
       function()
         require("dap").step_out()
       end,
-      "Step Out",
+      "Step out",
     },
     ["<leader>dt"] = {
       function()
         require("dap").toggle_breakpoint()
       end,
-      "Toggle Breakpoint",
+      "Toggle breakpoint",
     },
     ["<leader>dr"] = {
       function()
         require("dap").repl.toggle()
       end,
-      "Toggle Repl",
+      "Toggle repl",
     },
     ["<leader>dU"] = {
       function()
         require("dapui").toggle()
       end,
-      "Toggle DebugUI",
+      "Toggle debug UI",
     },
   },
 }
@@ -118,7 +118,7 @@ M.debugging = {
 M.buffers = {
   n = {
     ["<leader>b"] = { "+Buffers" },
-    ["<leader>bn"] = { "TODO: Newbuffer" },
+    ["<leader>bn"] = { ":edit " .. vim.fn.getcwd() .. "/", "New buffer" },
     ["<leader>bc"] = {
       function()
         require("nvchad.tabufline").close_buffer()
@@ -129,19 +129,25 @@ M.buffers = {
       function()
         require("nvchad.tabufline").closeAllBufs()
       end,
-      "Buffers CloseAll",
+      "Close all",
+    },
+    ["<leader>bf"] = {
+      function()
+        require("nvchad.tabufline").closeOtherBufs()
+      end,
+      "Focus (close others)",
     },
     ["<leader>bh"] = {
       function()
         require("nvchad.tabufline").move_buf(-1)
       end,
-      "Buffers MoveLeft",
+      "Move current left",
     },
     ["<leader>bl"] = {
       function()
         require("nvchad.tabufline").move_buf(1)
       end,
-      "Buffers MoveRight",
+      "Move current right",
     },
   },
 }
@@ -149,19 +155,19 @@ M.buffers = {
 M.telescope = {
   n = {
     ["<leader>s"] = { "+Search" },
-    ["<leader>sa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find AllFiles" },
-    ["<leader>sb"] = { ":Telescope buffers <CR>", "Find Buffers" },
-    ["<leader>sd"] = { ":Telescope diagnostics <CR>", "Find Diagnostics" },
-    ["<leader>sf"] = { ":Telescope git_files <CR>", "Find Files" },
-    ["<leader>sl"] = { ":Telescope resume <CR>", "Find LastSearch" },
-    ["<leader>sh"] = { ":Telescope help_tags <CR>", "Find HelpTags" },
-    ["<leader>st"] = { ":Telescope live_grep <CR>", "Find Text" },
-    ["<leader>su"] = { ":Telescope themes <CR>", "Find UIThemes" },
-    ["<leader>sm"] = { ":Telescope marks <CR>", "Find Markers" },
-    ["<leader>so"] = { ":Telescope oldfiles <CR>", "Find Oldfiles" },
-    ["<leader>sr"] = { ":Telescope registers <CR>", "Find Registers" },
-    ["<leader>sc"] = { ":Telescope current_buffer_fuzzy_find <CR>", "Find InCurrentBuffer" },
-    ["<leader>sx"] = { ":Telescope commands <CR>", "Find Commands" },
+    ["<leader>sa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all files" },
+    ["<leader>sb"] = { ":Telescope buffers <CR>", "Find buffers" },
+    ["<leader>sd"] = { ":Telescope diagnostics <CR>", "Find diagnostics" },
+    ["<leader>sf"] = { ":Telescope git_files <CR>", "Find files" },
+    ["<leader>sl"] = { ":Telescope resume <CR>", "Find last search" },
+    ["<leader>sh"] = { ":Telescope help_tags <CR>", "Find helptags" },
+    ["<leader>st"] = { ":Telescope live_grep <CR>", "Find text" },
+    ["<leader>su"] = { ":Telescope themes <CR>", "Find UI Themes" },
+    ["<leader>sm"] = { ":Telescope marks <CR>", "Find markers" },
+    ["<leader>so"] = { ":Telescope oldfiles <CR>", "Find old files" },
+    ["<leader>sr"] = { ":Telescope registers <CR>", "Find registers" },
+    ["<leader>sc"] = { ":Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+    ["<leader>sx"] = { ":Telescope commands <CR>", "Find commands" },
   },
 }
 
@@ -171,7 +177,7 @@ M.lspconfig = {
       function()
         vim.lsp.buf.signature_help()
       end,
-      "LSP SignatureHelp",
+      "LSP signature help",
     },
     ["gl"] = {
       function()
@@ -194,12 +200,12 @@ M.general = {
         vim.lsp.buf.format { async = false }
         vim.cmd "w"
       end,
-      "Write (Formatting)",
+      "Write (formatting)",
     },
-    ["<leader>f"] = { ":Telescope git_files <CR>", "Find Files" },
-    ["<leader>h"] = { ":noh <CR>", "Hightlight Clear" },
+    ["<leader>f"] = { ":Telescope git_files <CR>", "Find files" },
+    ["<leader>h"] = { ":noh <CR>", "Hightlight (clear)" },
     ["<leader>q"] = { ":q <CR>", "Quit" },
-    ["<leader>e"] = { ":NvimTreeToggle <CR>", "Explorer (Toggle)" },
+    ["<leader>e"] = { ":NvimTreeToggle <CR>", "Explorer (toggle)" },
     ["<leader>c"] = {
       function()
         require("nvchad.tabufline").close_buffer()
@@ -210,7 +216,7 @@ M.general = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
-      "Terminal (Toggle)",
+      "Terminal (toggle)",
     },
   },
   v = {
@@ -218,7 +224,7 @@ M.general = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
-      "Terminal (Toggle)",
+      "Terminal (toggle)",
     },
   },
   t = {
@@ -226,7 +232,7 @@ M.general = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
-      "Terminal (Toggle)",
+      "Terminal (toggle)",
     },
   },
 }
