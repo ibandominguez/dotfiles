@@ -212,7 +212,7 @@ M.general = {
       end,
       "Close buffer",
     },
-    ["<C-\\>"] = {
+    ["<C-t>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
@@ -220,7 +220,7 @@ M.general = {
     },
   },
   v = {
-    ["<C-\\>"] = {
+    ["<C-t>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
@@ -228,7 +228,7 @@ M.general = {
     },
   },
   t = {
-    ["<C-\\>"] = {
+    ["<C-t>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
