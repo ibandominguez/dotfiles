@@ -1,6 +1,8 @@
 ---@type NvPluginSpec[]
 local plugins = {
 
+  -- Core nvad plugins overwride
+
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -79,15 +81,12 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = {
-      git = {
-        enable = true,
-      },
+      git = { enable = true },
       renderer = {
         highlight_git = true,
         icons = {
-          show = {
-            git = true,
-          },
+          git_placement = "signcolumn",
+          show = { git = true },
         },
       },
     },
