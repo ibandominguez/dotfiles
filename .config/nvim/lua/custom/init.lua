@@ -16,7 +16,11 @@ autocmd("TextYankPost", {
 })
 
 autocmd({ "VimEnter" }, {
-  callback = function()
-    require("nvim-tree.api").tree.open()
+  callback = function(data)
+    if data.file == "" then
+      vim.cmd "Nvdash"
+    elseif vim.fn.isdirectory(data.file) == 1 then
+      require("nvim-tree.api").tree.open()
+    end
   end,
 })
