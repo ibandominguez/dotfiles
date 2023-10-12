@@ -54,7 +54,7 @@ M.debugging = {
     },
     ["<leader>dg"] = {
       function()
-        require("dap").get_session()
+        require("dap").session()
       end,
       "Get Session",
     },
@@ -102,7 +102,7 @@ M.debugging = {
     },
     ["<leader>dr"] = {
       function()
-        require("dapui").toggle_repl()
+        require("dap").repl.toggle()
       end,
       "Toggle Repl",
     },
