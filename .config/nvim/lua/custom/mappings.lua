@@ -3,19 +3,19 @@ local M = {}
 
 M.git = {
   n = {
-    ["<leader>g"] = { "+Git" },
-    ["<leader>gb"] = { ":Gitsigns blame_line <CR>", "Git blame" },
-    ["<leader>gg"] = { ":LazyGit <CR>", "LazyGit" },
-    ["<leader>gc"] = { ":Telescope git_commits <CR>", "Git commits" },
+    ["<leader>g"] = { "+Git", opts = { silent = true } },
+    ["<leader>gb"] = { ":Gitsigns blame_line <CR>", "Git blame", opts = { silent = true } },
+    ["<leader>gg"] = { ":LazyGit <CR>", "LazyGit", opts = { silent = true } },
+    ["<leader>gc"] = { ":Telescope git_commits <CR>", "Git commits", opts = { silent = true } },
   },
 }
 
 M.nvchad = {
   n = {
     ["<leader>n"] = { "+NvChad" },
-    ["<leader>nd"] = { ":Nvdash <CR>", "Dashboard" },
-    ["<leader>nu"] = { ":NvChadUpdate <CR>", "Update" },
-    ["<leader>ns"] = { ":NvCheatsheet <CR>", "CheatSheet" },
+    ["<leader>nd"] = { ":Nvdash <CR>", "Dashboard", opts = { silent = true } },
+    ["<leader>nu"] = { ":NvChadUpdate <CR>", "Update", opts = { silent = true } },
+    ["<leader>ns"] = { ":NvCheatsheet <CR>", "CheatSheet", opts = { silent = true } },
     ["<leader>nr"] = {
       function()
         require("plenary.reload").reload_module "custom.init"
@@ -155,22 +155,30 @@ M.buffers = {
 M.telescope = {
   n = {
     ["<leader>s"] = { "+Search" },
-    ["<leader>sa"] = { ":Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Search all files" },
-    ["<leader>sb"] = { ":Telescope buffers <CR>", "Search buffers" },
-    ["<leader>sd"] = { ":Telescope diagnostics <CR>", "Search diagnostics" },
-    ["<leader>sf"] = { ":Telescope git_files <CR>", "Search files" },
-    ["<leader>sl"] = { ":Telescope resume <CR>", "Search last search" },
-    ["<leader>sh"] = { ":Telescope help_tags <CR>", "Search helptags" },
-    ["<leader>st"] = { ":Telescope live_grep <CR>", "Search text" },
-    ["<leader>su"] = { ":Telescope themes <CR>", "Search UI Themes" },
-    ["<leader>sm"] = { ":Telescope marks <CR>", "Search markers" },
-    ["<leader>sj"] = { ":Telescope jumplist <CR>", "Search jumps" },
-    ["<leader>sk"] = { ":Telescope keymaps <CR>", "Search keymaps" },
-    ["<leader>so"] = { ":Telescope oldfiles <CR>", "Search old files" },
-    ["<leader>sr"] = { ":Telescope registers <CR>", "Search registers" },
-    ["<leader>sc"] = { ":Telescope current_buffer_fuzzy_find <CR>", "Search in current buffer" },
-    ["<leader>ss"] = { ":Telescope spell_suggest <CR>", "Search spell suggestions" },
-    ["<leader>sx"] = { ":Telescope commands <CR>", "Search commands" },
+    ["<leader>sa"] = {
+      ":Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+      "Search all files",
+      opts = { silent = true },
+    },
+    ["<leader>sb"] = { ":Telescope buffers <CR>", "Search buffers", opts = { silent = true } },
+    ["<leader>sd"] = { ":Telescope diagnostics <CR>", "Search diagnostics", opts = { silent = true } },
+    ["<leader>sf"] = { ":Telescope git_files <CR>", "Search files", opts = { silent = true } },
+    ["<leader>sl"] = { ":Telescope resume <CR>", "Search last search", opts = { silent = true } },
+    ["<leader>sh"] = { ":Telescope help_tags <CR>", "Search helptags", opts = { silent = true } },
+    ["<leader>st"] = { ":Telescope live_grep <CR>", "Search text", opts = { silent = true } },
+    ["<leader>su"] = { ":Telescope themes <CR>", "Search UI Themes", opts = { silent = true } },
+    ["<leader>sm"] = { ":Telescope marks <CR>", "Search markers", opts = { silent = true } },
+    ["<leader>sj"] = { ":Telescope jumplist <CR>", "Search jumps", opts = { silent = true } },
+    ["<leader>sk"] = { ":Telescope keymaps <CR>", "Search keymaps", opts = { silent = true } },
+    ["<leader>so"] = { ":Telescope oldfiles <CR>", "Search old files", opts = { silent = true } },
+    ["<leader>sr"] = { ":Telescope registers <CR>", "Search registers", opts = { silent = true } },
+    ["<leader>sc"] = {
+      ":Telescope current_buffer_fuzzy_find <CR>",
+      "Search in current buffer",
+      opts = { silent = true },
+    },
+    ["<leader>ss"] = { ":Telescope spell_suggest <CR>", "Search spell suggestions", opts = { silent = true } },
+    ["<leader>sx"] = { ":Telescope commands <CR>", "Search commands", opts = { silent = true } },
   },
 }
 
@@ -206,9 +214,9 @@ M.general = {
       "Write (formatting)",
     },
     ["<leader>f"] = { ":Telescope git_files <CR>", "Find files", opts = { silent = true } },
-    ["<leader>h"] = { ":noh <CR>", "Hightlight (clear)" },
-    ["<leader>q"] = { ":q <CR>", "Quit" },
-    ["<leader>e"] = { ":NvimTreeToggle <CR>", "Explorer (toggle)" },
+    ["<leader>h"] = { ":noh <CR>", "Hightlight (clear)", opts = { silent = true } },
+    ["<leader>q"] = { ":q <CR>", "Quit", opts = { silent = true } },
+    ["<leader>e"] = { ":NvimTreeToggle <CR>", "Explorer (toggle)", opts = { silent = true } },
     ["<leader>c"] = {
       function()
         require("nvchad.tabufline").close_buffer()
