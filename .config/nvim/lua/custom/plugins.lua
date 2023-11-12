@@ -14,7 +14,9 @@ local plugins = {
           null_ls.setup {
             debug = true,
             sources = {
-              builtins.formatting.deno_fmt.with { extra_args = { "--no-semicolons", "--line-width", "120" } }, -- Fast!
+              builtins.formatting.deno_fmt.with {
+                extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
+              }, -- Fast!
               builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "json" } }, -- Prettier only these filetypes
               builtins.formatting.stylua,
               builtins.formatting.clang_format,
