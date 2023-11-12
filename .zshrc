@@ -87,6 +87,8 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 # export MANPATH="/usr/local/man:$MANPATH"
 # export ARCHFLAGS="-arch x86_64"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+export ANDROID_HOME=/usr/local/Caskroom/android-sdk/4333796
 export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -109,9 +111,9 @@ alias htop="bpytop"
 
 # MacOs Related configs
 if [[ "$OSTYPE" == darwin* ]]; then
-  # defaults write com.apple.finder AppleShowAllFiles -bool true # Show hidden files
-  # defaults write com.apple.dock autohide -bool true # Auto hide dock
-  # defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true # Secondary Right click
+  defaults write com.apple.finder AppleShowAllFiles -bool true # Show hidden files
+  defaults write com.apple.dock autohide -bool true # Auto hide dock
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true # Secondary Right click
 fi
 
 # User functions
