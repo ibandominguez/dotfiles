@@ -114,6 +114,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
   defaults write com.apple.finder AppleShowAllFiles -bool true # Show hidden files
   defaults write com.apple.dock autohide -bool true # Auto hide dock
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true # Secondary Right click
+  defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv" # Default finder view icon as list
+  defaults write com.apple.Finder FXPreferredGroupBy -string "Kind" # Sort by kind
 fi
 
 # User functions
