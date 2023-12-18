@@ -88,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 # export ARCHFLAGS="-arch x86_64"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-export ANDROID_HOME=/usr/local/Caskroom/android-sdk/4333796
+export ANDROID_HOME=~/Library/Android/sdk
 export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
