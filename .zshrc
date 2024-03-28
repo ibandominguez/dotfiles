@@ -116,14 +116,19 @@ if [[ "$OSTYPE" == darwin* ]]; then
   defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true # Secondary Right click
   defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv" # Default finder view icon as list
   defaults write com.apple.Finder FXPreferredGroupBy -string "Kind" # Sort by kind
+  defaults write com.microsoft.vscode applepressandholdenabled -bool false              # for vs code
+  defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false      # For VS Code Insider
+  defaults write com.vscodium applepressandholdenabled -bool false                      # for vs codium
+  defaults write com.microsoft.vscodeexploration applepressandholdenabled -bool false   # for vs codium exploration users
+  defaults delete -g applepressandholdenabled                                           # if necessary, reset global default
 fi
 
-# User functions
+# user functions
 
-# Install plugins function
+# install plugins function
 function install_ohmyzsh_plugins() {
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${zsh_custom:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${zsh_custom:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
