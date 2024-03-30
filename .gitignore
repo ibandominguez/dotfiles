@@ -5,11 +5,9 @@
 !.zshrc
 !.tmux.conf
 !.config/
-!.config/lvim/
-!.config/lvim/config.lua
 !.config/nvim/
-.config/nvim/*
-.config/nvim/plugins/*
-!.config/nvim/lua
-!.config/nvim/lua/custom/
+!.config/nvim/*
+!.config/nvim/lua/*
+!.config/nvim/lua/configs/*
+!.config/nvim/lua/plugins/*
 !.config/nvim/lua/custom/*
