@@ -1,9 +1,10 @@
-require "nvchad.mappings"
+-- If you want to load default mappings
+-- require "nvchad.mappings"
 
+-- Mapping
 local map = vim.keymap.set
-local unmap = vim.keymap.del
 
--- Mappings examples
+-- Examples
 -- map("i", "<C-k>", "<Up>", { desc = "Move up" })
 -- map({ "i", "n" }, "<C-k>", "<Up>", { desc = "Move down" })
 -- map("n", "<leader>ff", ":Telescope <cr>")
@@ -11,11 +12,23 @@ local unmap = vim.keymap.del
 --   require("nvchad.term").toggle({ pos = "sp", id ='abc' })
 -- end, { desc = "Terminal toggle floating" })
 
+-- Unmapping
+local unmap = vim.keymap.del
+
+-- Examples
+-- unmap("n", "<leader>m")
+-- unmap({ "n", "v" }, "<leader>m")
+
 -- General
 map("n", "<leader>w", function()
   vim.lsp.buf.format { async = false }
   vim.cmd "w"
 end, { desc = "Write (Formatting)" })
+
+-- Comment
+map("n", "<leader>/", function()
+  require("Comment.api").toggle.linewise.current()
+end, { desc = "Comment Toggle" })
 
 map("n", "<leader>f", ":Telescope git_files <CR>", { desc = "Find files", silent = true })
 map("n", "<leader>h", ":noh <CR>", { desc = "Hightlight (clear)", silent = true })
@@ -35,7 +48,6 @@ map("n", "<leader>g", "+Git")
 map("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "Git blame" })
 map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Git commits" })
 map("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Git LazyGit" })
-unmap("n", "<leader>gt")
 
 -- NvChad
 map("n", "<leader>n", "+NvChad")
@@ -198,19 +210,3 @@ end, { desc = "Move current left" })
 map("n", "<leader>bl", function()
   require("nvchad.tabufline").move_buf(1)
 end, { desc = "Move current right" })
-
--- Unmappings
-unmap("n", "<leader>fa")
-unmap("n", "<leader>fb")
-unmap("n", "<leader>ff")
-unmap("n", "<leader>fh")
-unmap("n", "<leader>fm")
-unmap("n", "<leader>fo")
-unmap("n", "<leader>fw")
-unmap("n", "<leader>fz")
-unmap("n", "<leader>v")
-unmap("n", "<leader>x")
--- unmap("n", "<leader>l")
--- unmap("n", "<leader>p")
--- unmap("n", "<leader>r")
--- unmap("n", "<leader>t")
