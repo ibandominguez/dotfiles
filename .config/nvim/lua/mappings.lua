@@ -30,6 +30,14 @@ map("n", "<leader>/", function()
   require("Comment.api").toggle.linewise.current()
 end, { desc = "Comment Toggle" })
 
+map("n", "<tab>", function()
+  require("nvchad.tabufline").next()
+end, { desc = "Next tab" })
+
+map("n", "<S-tab>", function()
+  require("nvchad.tabufline").prev()
+end, { desc = "Prev tab" })
+
 map("n", "<leader>f", ":Telescope git_files <CR>", { desc = "Find files", silent = true })
 map("n", "<leader>h", ":noh <CR>", { desc = "Hightlight (clear)", silent = true })
 map("n", "<leader>q", ":q <CR>", { desc = "Quit", silent = true })
