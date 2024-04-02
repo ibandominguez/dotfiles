@@ -3,39 +3,29 @@ return {
   -- Core nvad plugins overwride
 
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          local null_ls = require "null-ls"
-          local builtins = null_ls.builtins
-          null_ls.setup {
-            debug = true,
-            sources = {
-              builtins.formatting.deno_fmt.with {
-                extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
-              }, -- Fast!
-              builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "json" } }, -- Prettier only these filetypes
-              builtins.formatting.stylua,
-              builtins.formatting.clang_format,
-            },
-          }
-        end,
-      },
-    },
+    "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require "plugins.configs.lspconfig"
-      local on_attach = require("plugins.configs.lspconfig").on_attach
-      local capabilities = require("plugins.configs.lspconfig").capabilities
-      local lspconfig = require "lspconfig"
-      local default_servers = { "html", "cssls", "tsserver", "clangd", "tailwindcss" } -- Add servers for default config
-      for _, lsp in ipairs(default_servers) do
-        lspconfig[lsp].setup {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
-      end
+      local null_ls = require "null-ls"
+      local builtins = null_ls.builtins
+      null_ls.setup {
+        debug = true,
+        sources = {
+          builtins.formatting.deno_fmt.with {
+            extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
+          },                                                                                       -- Fast!
+          builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "json" } }, -- Prettier only these filetypes
+          builtins.formatting.stylua,
+          builtins.formatting.clang_format,
+        },
+      }
+    end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
     end,
   },
 
@@ -98,7 +88,7 @@ return {
         highlight_git = true,
         icons = {
           git_placement = "signcolumn",
-          show = { git = true },
+          show = { git = false },
         },
       },
     },
@@ -161,11 +151,11 @@ return {
           },
         },
         presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
         },
       }
     end,
