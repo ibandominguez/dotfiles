@@ -1,6 +1,6 @@
 # Dotfiles
 
-A colllection of my dotfiles for reference a quick reinstall.
+A collection of my dotfiles for reference a quick reinstall.
 
 ## Tools I use
 
