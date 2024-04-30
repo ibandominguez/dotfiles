@@ -130,11 +130,6 @@ return {
   {
     "kdheepak/lazygit.nvim", -- LazyGit within neovim
     event = "VeryLazy",
-    config = function()
-      require("lazy").setup {
-        { "kdheepak/lazygit.nvim" },
-      }
-    end,
   },
 
   {
