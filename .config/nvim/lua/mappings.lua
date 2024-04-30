@@ -1,6 +1,11 @@
 -- If you want to load default mappings
 -- require "nvchad.mappings"
 
+-- Unmapping (When using default mappings)
+-- local unmap = vim.keymap.del
+-- unmap("n", "<leader>m")
+-- unmap({ "n", "v" }, "<leader>m")
+
 -- Mapping
 local map = vim.keymap.set
 
@@ -11,13 +16,6 @@ local map = vim.keymap.set
 -- map("n", "<A-i>", function()
 --   require("nvchad.term").toggle({ pos = "sp", id ='abc' })
 -- end, { desc = "Terminal toggle floating" })
-
--- Unmapping
-local unmap = vim.keymap.del
-
--- Examples
--- unmap("n", "<leader>m")
--- unmap({ "n", "v" }, "<leader>m")
 
 -- General
 map("n", "<leader>w", function()
@@ -37,6 +35,7 @@ map(
   { desc = "Comment toggle" }
 )
 
+-- Buffers
 map("n", "<tab>", function()
   require("nvchad.tabufline").next()
 end, { desc = "Next tab" })
