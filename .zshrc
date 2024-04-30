@@ -123,8 +123,12 @@ if [[ "$OSTYPE" == darwin* ]]; then
   defaults delete -g applepressandholdenabled                                           # if necessary, reset global default
 fi
 
-# user functions
+# Nodejs Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# user functions
 # install plugins function
 function install_ohmyzsh_plugins() {
   git clone https://github.com/zsh-users/zsh-autosuggestions ${zsh_custom:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
