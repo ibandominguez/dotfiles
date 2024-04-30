@@ -5,8 +5,8 @@
 local M = {}
 
 M.ui = {
-  theme = "onenord",
-  theme_toggle = { "onenord", "onenord_light" },
+  theme = "chocolate",
+  theme_toggle = { "chocolate", "onenord_light" },
 
   hl_override = {
     Comment = {
