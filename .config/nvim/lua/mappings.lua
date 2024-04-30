@@ -30,6 +30,13 @@ map("n", "<leader>/", function()
   require("Comment.api").toggle.linewise.current()
 end, { desc = "Comment Toggle" })
 
+map(
+  "v",
+  "<leader>/",
+  "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+  { desc = "Comment toggle" }
+)
+
 map("n", "<tab>", function()
   require("nvchad.tabufline").next()
 end, { desc = "Next tab" })
