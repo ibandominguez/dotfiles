@@ -1,0 +1,2 @@
+! Map BloqMayus to Control
+keycode 66 = Control_L NoSymbol Control_L
