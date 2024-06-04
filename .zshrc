@@ -124,6 +124,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   defaults write com.vscodium applepressandholdenabled -bool false                      # for vs codium
   defaults write com.microsoft.vscodeexploration applepressandholdenabled -bool false   # for vs codium exploration users
   defaults delete -g applepressandholdenabled                                           # if necessary, reset global default fi
+fi
 
 # Nodejs Version Manager
 export NVM_DIR="$HOME/.nvm"
