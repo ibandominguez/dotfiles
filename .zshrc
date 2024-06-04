@@ -107,9 +107,9 @@ alias top="bpytop"
 alias htop="bpytop"
 
 # Linux related configs
-if [ "$(uname)" == "Linux" ]; then
- export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
- export ANDROID_HOME=~/Android/Sdk
+if [[ "$(uname)" == "Linux" ]]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+  export ANDROID_HOME=~/Android/Sdk
 fi
 
 # MacOs Related configs
@@ -123,8 +123,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false      # For VS Code Insider
   defaults write com.vscodium applepressandholdenabled -bool false                      # for vs codium
   defaults write com.microsoft.vscodeexploration applepressandholdenabled -bool false   # for vs codium exploration users
-  defaults delete -g applepressandholdenabled                                           # if necessary, reset global default
-fi
+  defaults delete -g applepressandholdenabled                                           # if necessary, reset global default fi
 
 # Nodejs Version Manager
 export NVM_DIR="$HOME/.nvm"
