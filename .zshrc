@@ -84,12 +84,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export LANG=en_US.UTF-8
 # export MANPATH="/usr/local/man:$MANPATH"
 # export ARCHFLAGS="-arch x86_64"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-export ANDROID_HOME=~/Library/Android/sdk
-export DOTNET_ROOT="/usr/local/opt/dotnet/libexec"
+export LANG=en_US.UTF-8
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -108,6 +105,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # For a full list of active aliases, run `alias`.
 alias top="bpytop"
 alias htop="bpytop"
+
+# Linux related configs
+if [ "$(uname)" == "Linux" ]; then
+ export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+ export ANDROID_HOME=~/Android/Sdk
+fi
 
 # MacOs Related configs
 if [[ "$OSTYPE" == darwin* ]]; then
