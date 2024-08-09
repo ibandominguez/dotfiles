@@ -47,6 +47,7 @@ return {
         "stylua",
         "css-lsp",
         "html-lsp",
+        "json-lsp",
         "typescript-language-server",
         "deno",
         "prettier",
