@@ -131,11 +131,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# user functions
-# install plugins function
-function install_ohmyzsh_plugins() {
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${zsh_custom:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${zsh_custom:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-}
+# ZSH autosuggestions plugin
+if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
+  echo "Installing zsh autosuggestions ..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+fi
+
+# Syntax highlighting plugin
+if [[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]]; then
+  echo "Installing zsh syntax highlighting ..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
