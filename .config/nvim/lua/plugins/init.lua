@@ -70,6 +70,7 @@ return {
         "typescript",
         "tsx",
         "c",
+        "php",
         "markdown",
         "markdown_inline",
       },
