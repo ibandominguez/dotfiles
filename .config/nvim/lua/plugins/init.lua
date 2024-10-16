@@ -48,6 +48,7 @@ return {
         "css-lsp",
         "html-lsp",
         "json-lsp",
+        "phpactor",
         "typescript-language-server",
         "deno",
         "prettier",
