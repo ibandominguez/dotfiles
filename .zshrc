@@ -89,6 +89,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 # You may need to manually set your language environment
 
