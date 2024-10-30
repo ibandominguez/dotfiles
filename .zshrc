@@ -106,6 +106,7 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 # For a full list of active aliases, run `alias`.
 alias top="bpytop"
 alias htop="bpytop"
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 # Linux related configs
 if [[ "$(uname)" == "Linux" ]]; then
