@@ -1,46 +1,51 @@
 return {
-
-  -- Core nvad plugins overwride
-
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls = require "null-ls"
-      local builtins = null_ls.builtins
-      null_ls.setup {
-        debug = true,
-        sources = {
-          builtins.formatting.deno_fmt.with {
-            extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
-          },                                                                                       -- Fast!
-          builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "json" } }, -- Prettier only these filetypes
-          builtins.formatting.stylua,
-          builtins.formatting.clang_format,
-        },
-      }
-    end,
+    "stevearc/conform.nvim",
+    event = "BufWritePre", -- uncomment for format on save
+    opts = require "configs.conform",
   },
 
   {
     "neovim/nvim-lspconfig",
+    event = "VeryLazy",
     config = function()
       require "configs.lspconfig"
     end,
   },
 
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    -- init = function()
-    --   vim.o.timeout = true
-    --   vim.o.timeoutlen = 0
-    -- end,
-  },
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   config = function()
+  --     local null_ls = require "null-ls"
+  --     local builtins = null_ls.builtins
+  --     null_ls.setup {
+  --       debug = true,
+  --       sources = {
+  --         builtins.formatting.deno_fmt.with {
+  --           extra_args = { "--no-semicolons", "--single-quote", "--line-width", "120" },
+  --         },                                                                                       -- Fast!
+  --         builtins.formatting.prettier.with { filetypes = { "html", "markdown", "css", "json" } }, -- Prettier only these filetypes
+  --         builtins.formatting.stylua,
+  --         builtins.formatting.clang_format,
+  --       },
+  --     }
+  --   end,
+  -- },
+
+  -- {
+  --   "folke/which-key.nvim",
+  --   event = "VeryLazy",
+  --   -- init = function()
+  --   --   vim.o.timeout = true
+  --   --   vim.o.timeoutlen = 0
+  --   -- end,
+  -- },
 
   -- Pass opts but use core defaults
 
   {
     "williamboman/mason.nvim",
+    event = "VeryLazy",
     opts = {
       ensure_installed = {
         "lua-language-server",
@@ -61,6 +66,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
     opts = {
       ensure_installed = {
         "vim",
@@ -84,6 +90,7 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
+    event = "VeryLazy",
     opts = {
       git = { enable = true },
       renderer = {
@@ -94,16 +101,6 @@ return {
         },
       },
     },
-  },
-
-  -- Custom Plugins
-
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
   },
 
   {
@@ -176,6 +173,12 @@ return {
         },
       }
     end,
+  },
+
+  {
+    "numToStr/Comment.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
 
   -- To make a plugin not be loaded

@@ -1,13 +1,14 @@
--- If you want to load default mappings
+-- Load nvchad mappings
 -- require "nvchad.mappings"
+
+-- add yours here
+
+local map = vim.keymap.set
 
 -- Unmapping (When using default mappings)
 -- local unmap = vim.keymap.del
 -- unmap("n", "<leader>m")
 -- unmap({ "n", "v" }, "<leader>m")
-
--- Mapping
-local map = vim.keymap.set
 
 -- Examples
 -- map("i", "<C-k>", "<Up>", { desc = "Move up" })
@@ -66,7 +67,7 @@ map("n", "<leader>gg", "<cmd>LazyGit<cr>", { desc = "Git LazyGit" })
 -- NvChad
 map("n", "<leader>n", "+NvChad")
 map("n", "<leader>nd", ":Nvdash<cr>", { desc = "Dashboard" })
-map("n", "<leader>nu", ":NvChadUpdate<cr>", { desc = "Update" })
+map("n", "<leader>nu", ":Lazy sync<cr>", { desc = "Update" })
 map("n", "<leader>ns", ":NvCheatsheet<cr>", { desc = "CheatSheet" })
 map("n", "<leader>nr", function()
   require("plenary.reload").reload_module "init"
