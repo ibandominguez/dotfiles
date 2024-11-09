@@ -20,7 +20,7 @@ local map = vim.keymap.set
 
 -- General
 map("n", "<leader>w", function()
-  vim.lsp.buf.format { async = false }
+  require("conform").format()
   vim.cmd "w"
 end, { desc = "Write (Formatting)" })
 
