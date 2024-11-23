@@ -6,6 +6,7 @@ require "nvchad.options"
 -- Global configs
 
 option.swapfile = false
+option.clipboard = "unnamedplus"
 
 -- Autocommands
 
