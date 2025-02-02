@@ -225,3 +225,7 @@ end, { desc = "Move current left" })
 map("n", "<leader>bl", function()
   require("nvchad.tabufline").move_buf(1)
 end, { desc = "Move current right" })
+
+map("i", "<C-l>", function()
+  vim.fn.feedkeys(vim.fn["copilot#Accept"](), "")
+end, { desc = "Copilot Accept", noremap = true, silent = true })

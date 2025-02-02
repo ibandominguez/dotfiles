@@ -98,6 +98,14 @@ return {
   },
 
   {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+
+  {
     "windwp/nvim-ts-autotag", -- Auto close and renames tags
     lazy = false,
     config = function()
@@ -158,6 +166,15 @@ return {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
     opts = {},
+  },
+
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = function() -- Mapping tab is already used in NvChad
+      vim.g.copilot_no_tab_map = true -- Disable tab mapping
+      vim.g.copilot_assume_mapped = true -- Assume that the mapping is already done
+    end,
   },
 
   -- To make a plugin not be loaded
