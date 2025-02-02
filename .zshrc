@@ -86,7 +86,6 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # export ARCHFLAGS="-arch x86_64"
-export LANG=en_US.UTF-8
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
@@ -151,6 +150,25 @@ if [ -z "$(git config --global user.email)" ]; then
   echo "Please set it using the following command:"
   echo "  git config --global user.email 'youremail@example.com'"
   echo "  git config --global user.name 'Name'"
+fi
+
+# Check if TPM is already installed
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  # Clone TPM repository if not installed
+  echo "Installing TPM (Tmux Plugin Manager)..."
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+  # Start a tmux session or attach to an existing one
+  tmux has-session -t mysession 2>/dev/null
+
+  if [ $? != 0 ]; then
+    # Create a new tmux session if one doesn't exist
+    tmux new-session -d -s mysession
+  fi
+
+  # Send the key sequence for installing plugins (`prefix + I`)
+  tmux send-keys -t mysession "prefix I" C-m
+
+  echo "Plugins installation triggered. Press 'prefix + I' in the tmux session if needed."
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
