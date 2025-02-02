@@ -90,9 +90,25 @@ vim.keymap.set("n", "<S-Tab>", function()
 end, { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>c", function()
-  vim.fn.VSCodeNotify("workbench.action.closeActiveEditor")
+  vim.fn.VSCodeNotify "workbench.action.closeActiveEditor"
 end, { silent = true, noremap = true })
 
--- TODO: Panel navigation like tmux / vim-tmux-navigator
--- TODO: Search / Replace
+vim.keymap.set("n", "<leader>bf", function()
+  vim.fn.VSCodeNotify "workbench.action.closeOtherEditors"
+end, { silent = true, noremap = true })
 
+vim.keymap.set("n", "<leader>bq", function()
+  vim.fn.VSCodeNotify "workbench.action.closeAllEditors"
+end, { silent = true, noremap = true })
+
+vim.keymap.set("n", "<leader>h", function()
+  vim.cmd "nohlsearch"
+end, { silent = true, noremap = true })
+
+vim.keymap.set("n", "<leader>sf", function()
+  vim.fn.VSCodeNotify "workbench.action.quickOpen"
+end, { silent = true, noremap = true })
+
+vim.keymap.set("n", "<leader>st", function()
+  vim.fn.VSCodeNotify "workbench.action.replaceInFiles"
+end, { silent = true, noremap = true })
