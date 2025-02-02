@@ -171,16 +171,24 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     lazy = false,
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" },
+    dependencies = { "github/copilot.lua" },
+    opts = {
+      window = {
+        layout = "float", -- Floating chat UI
+        width = 0.8, -- 80% of the screen
+        height = 0.8, -- 70% of the screen
+        border = "rounded", -- Rounded border for UI
+      },
+      keymaps = {
+        submit_prompt = "<C-Enter>", -- Send message
+        close = "<C-q>", -- Close chat
+        yank_last = "<C-y>", -- Copy last response
+      },
     },
-    build = "make tiktoken",
-    config = function()
-      require("CopilotChat").setup {
-        -- TODO: Configure options
-      }
-    end,
+    keys = {
+      { "<leader>cc", "<cmd>CopilotChatToggle<CR>", desc = "Open Copilot Chat" },
+      -- TODO: Write other maps
+    },
   },
 
   -- To make a plugin not be loaded
