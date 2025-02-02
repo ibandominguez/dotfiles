@@ -28,3 +28,10 @@ autocmd({ "VimEnter" }, {
     end
   end,
 })
+
+autocmd({ "VimEnter" }, {
+  callback = function()
+    require("mason").setup()
+    vim.cmd "MasonInstallAll"
+  end,
+})
