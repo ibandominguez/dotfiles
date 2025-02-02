@@ -17,6 +17,9 @@ git remote add origin https://github.com/ibandominguez/dotfiles.git
 git pull origin master
 ```
 
+## Nvchad nvim notes:
+- Formatters like prettier need an extra config file or package.json in order to work.
+
 # License
 
 MIT
