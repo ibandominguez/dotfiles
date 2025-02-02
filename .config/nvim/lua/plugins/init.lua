@@ -13,15 +13,6 @@ return {
     end,
   },
 
-  -- {
-  --   "folke/which-key.nvim",
-  --   event = "VeryLazy",
-  --   -- init = function()
-  --   --   vim.o.timeout = true
-  --   --   vim.o.timeoutlen = 0
-  --   -- end,
-  -- },
-
   {
     "williamboman/mason.nvim",
     event = "VeryLazy",
@@ -174,6 +165,21 @@ return {
     config = function() -- Mapping tab is already used in NvChad
       vim.g.copilot_no_tab_map = true -- Disable tab mapping
       vim.g.copilot_assume_mapped = true -- Assume that the mapping is already done
+    end,
+  },
+
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    lazy = false,
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    config = function()
+      require("CopilotChat").setup {
+        -- TODO: Configure options
+      }
     end,
   },
 
