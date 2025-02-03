@@ -167,6 +167,8 @@ return {
     end,
   },
 
+  -- Cursor AI neovim integration:
+  -- https://www.youtube.com/watch?v=4kzSV2xctjc
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
