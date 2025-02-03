@@ -160,48 +160,52 @@ return {
   },
 
   {
-    "github/copilot.vim",
-    lazy = false,
+    "zbirenbaum/copilot.vim",
     config = function() -- Mapping tab is already used in NvChad
       vim.g.copilot_no_tab_map = true -- Disable tab mapping
       vim.g.copilot_assume_mapped = true -- Assume that the mapping is already done
     end,
   },
 
-  -- TODO: Refer to docs https://github.com/CopilotC-Nvim/CopilotChat.nvim
-  -- and do some research about a better integration, using popaps, reading current line, buffer, etc
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = false,
-    dependencies = { "github/copilot.lua" },
-    config = function()
-      require("CopilotChat").setup {
-        window = {
-          layout = "float", -- Floating chat UI
-          width = 0.8, -- 80% of the screen
-          height = 0.8, -- 70% of the screen
-          border = "rounded", -- Rounded border for UI
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    build = "make",
+    opts = { provider = "copilot" },
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
         },
-        mappings = {
-          complete = { insert = "<C-l>" }, -- Replace C-c with C-l
-          close = { insert = "<C-q>" }, -- Replace C-c with C-q
-          reset = { normal = "<C-r>", insert = "<C-r>" }, -- Replace C-c with C-q
-        },
-      }
-    end,
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = { file_types = { "markdown", "Avante" } },
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
 }
