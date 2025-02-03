@@ -97,6 +97,13 @@ map("n", "<leader>sc", ":Telescope current_buffer_fuzzy_find <CR>", { desc = "Se
 map("n", "<leader>ss", ":Telescope spell_suggest <CR>", { desc = "Search spell suggestions" })
 map("n", "<leader>sx", ":Telescope commands <CR>", { desc = "Search commands" })
 
+-- AI
+map("n", "<leader>a", ":CopilotChatToggle <CR>", { desc = "AI CopilotChat" })
+map("n", "<leader>ac", ":CopilotChatToggle <CR>", { desc = "AI CopilotChat" })
+map("n", "<leader>ae", ":CopilotChatExplain <CR>", { desc = "AI CopilotChatExpain" })
+map("n", "<leader>af", ":CopilotChatFix <CR>", { desc = "AI CopilotChatFix" })
+map("n", "<leader>ar", ":CopilotChatReset <CR>", { desc = "AI CopilotChatReset" })
+
 -- LSP
 map("n", "gs", function()
   vim.lsp.buf.signature_help()

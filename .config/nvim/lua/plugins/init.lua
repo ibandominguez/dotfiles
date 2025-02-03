@@ -168,6 +168,8 @@ return {
     end,
   },
 
+  -- TODO: Refer to docs https://github.com/CopilotC-Nvim/CopilotChat.nvim
+  -- and do some research about a better integration, using popaps, reading current line, buffer, etc
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     lazy = false,
@@ -181,7 +183,9 @@ return {
           border = "rounded", -- Rounded border for UI
         },
         mappings = {
+          complete = { insert = "<C-l>" }, -- Replace C-c with C-l
           close = { insert = "<C-q>" }, -- Replace C-c with C-q
+          reset = { normal = "<C-r>", insert = "<C-r>" }, -- Replace C-c with C-q
         },
       }
     end,
