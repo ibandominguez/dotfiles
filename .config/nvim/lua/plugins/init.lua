@@ -160,14 +160,16 @@ return {
   },
 
   {
-    "zbirenbaum/copilot.vim",
+    "github/copilot.vim",
+    lazy = false,
     config = function() -- Mapping tab is already used in NvChad
       vim.g.copilot_no_tab_map = true -- Disable tab mapping
       vim.g.copilot_assume_mapped = true -- Assume that the mapping is already done
+      vim.api.nvim_set_keymap("i", "<C-L>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
     end,
   },
 
-  -- Cursor AI neovim integration:
+  -- Hi  -- Cursor AI neovim integration:
   -- https://www.youtube.com/watch?v=4kzSV2xctjc
   {
     "yetone/avante.nvim",
