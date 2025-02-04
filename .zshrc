@@ -103,6 +103,7 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+alias bat="batcat"
 alias top="bpytop"
 alias htop="bpytop"
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
