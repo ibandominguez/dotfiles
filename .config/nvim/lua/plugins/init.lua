@@ -166,6 +166,8 @@ return {
       vim.g.copilot_no_tab_map = true -- Disable tab mapping
       vim.g.copilot_assume_mapped = true -- Assume that the mapping is already done
       vim.api.nvim_set_keymap("i", "<C-L>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+      require("copilot").setup()
+      -- vim.cmd ":Copilot disable" -- Disable copilot when no tokens to prevent popup
     end,
   },
 
