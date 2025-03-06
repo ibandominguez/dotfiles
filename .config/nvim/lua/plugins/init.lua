@@ -168,6 +168,7 @@ return {
           enabled = true,
           debounce = 500,
           auto_trigger = true,
+          max_lines = 3,
           keymap = {
             accept = "<C-l>", -- customize keybinding for accepting suggestions
             prev = "<C-k>", -- previous suggestion
