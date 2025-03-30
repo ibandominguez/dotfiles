@@ -186,6 +186,13 @@ return {
     event = "VeryLazy",
     build = "make",
     opts = { provider = "copilot" },
+    -- opts = {
+    --  provider = "ollama",
+    --  ollama = {
+    --    model = "deepseek-coder:1.3b",
+    --    endpoint = "http://127.0.0.1:11434",
+    --  }
+    -- },
     dependencies = {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
