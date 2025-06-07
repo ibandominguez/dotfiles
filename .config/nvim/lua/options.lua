@@ -29,9 +29,18 @@ autocmd({ "VimEnter" }, {
   end,
 })
 
-autocmd({ "VimEnter" }, {
+autocmd("VimEnter", {
   callback = function()
-    require("mason").setup()
-    vim.cmd "MasonInstallAll"
+    vim.schedule(function()
+      local ok, mason = pcall(require, "mason")
+      if ok then
+        mason.setup()
+      end
+
+      local ok2, _ = pcall(vim.cmd, "MasonInstallAll")
+      if not ok2 then
+        vim.notify("MasonInstallAll not available (maybe mason-tool-installer not loaded yet)", vim.log.levels.WARN)
+      end
+    end)
   end,
 })
