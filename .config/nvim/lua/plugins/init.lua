@@ -45,17 +45,21 @@ return {
         "lua",
         "html",
         "css",
+        "json",
+        "php",
+        "blade", -- Laravel Blade templates
         "javascript",
         "typescript",
         "tsx",
-        "c",
-        "php",
+        "jsdoc", -- Optional: better JS/TS doc comment parsing
+        "c_sharp", -- C#
         "markdown",
         "markdown_inline",
+        "python",
       },
       indent = {
         enable = true,
-        -- disable = { "python" },
+        -- disable = { "python" }, -- Uncomment if needed
       },
     },
   },
