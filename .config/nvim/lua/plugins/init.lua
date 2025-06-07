@@ -25,6 +25,7 @@ return {
         "json-lsp",
         "phpactor",
         "typescript-language-server",
+        "eslint-lsp",
         "deno",
         "prettier",
         "tailwindcss-language-server",
