@@ -9,6 +9,7 @@ local options = {
     typescriptreact = { "prettier" },
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
+    cs = { "clang_format" },
   },
 
   -- These options will be passed to conform.format()

@@ -28,6 +28,7 @@ return {
         "deno",
         "prettier",
         "tailwindcss-language-server",
+        "csharp_ls",
         "clangd",
         "clang-format",
       },
