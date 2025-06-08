@@ -170,7 +170,7 @@ return {
 
   {
     "zbirenbaum/copilot.lua",
-    event = "VimEnter", -- Or any other trigger you prefer
+    event = "InsertEnter",
     config = function()
       require("copilot").setup {
         suggestion = {
@@ -179,12 +179,23 @@ return {
           auto_trigger = true,
           max_lines = 3,
           keymap = {
-            accept = "<C-l>", -- customize keybinding for accepting suggestions
-            prev = "<C-k>", -- previous suggestion
-            next = "<C-j>", -- next suggestion
+            accept = "<C-l>",
+            prev = "<C-k>",
+            next = "<C-j>",
           },
         },
       }
+
+      -- Hide suggestion when changing modes
+      vim.api.nvim_create_autocmd("ModeChanged", {
+        pattern = "i:*",
+        callback = function()
+          local ok, suggestion = pcall(require, "copilot.suggestion")
+          if ok then
+            suggestion.dismiss()
+          end
+        end,
+      })
     end,
   },
 
