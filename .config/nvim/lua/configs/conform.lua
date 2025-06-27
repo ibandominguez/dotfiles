@@ -10,6 +10,7 @@ local options = {
     javascript = { "prettier" },
     javascriptreact = { "prettier" },
     cs = { "clang_format" },
+    python = { "black" },
   },
 
   -- These options will be passed to conform.format()

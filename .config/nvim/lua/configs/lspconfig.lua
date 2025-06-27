@@ -8,8 +8,8 @@ local servers = {
   "ts_ls",
   "phpactor",
   "clangd",
+  "pyright",
   "tailwindcss",
-  "csharp_ls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -19,6 +19,14 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+-- Omnisharp
+lspconfig.omnisharp.setup {
+  cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
 -- ESLint LSP for JS/TS
 lspconfig.eslint.setup {
