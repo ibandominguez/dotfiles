@@ -99,8 +99,14 @@ map("n", "<leader>sx", ":Telescope commands <CR>", { desc = "Search commands" })
 
 -- LSP
 map("n", "gs", function()
-  vim.lsp.buf.signature_help()
-end, { desc = "LSP signature help" })
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  if line:sub(col, col):match("[%s%w]*%(") and line:sub(col + 1, -4+line):match("%)") then
+    vim.lsp.buf.signature_help()
+  else
+    vim.lsp.buf.hover()
+  end
+end, { desc = "Show LSP hover or signature" })
 
 map("n", "gl", function()
   local float = vim.diagnostic.config().float
